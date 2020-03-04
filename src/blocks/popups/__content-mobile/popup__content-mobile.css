@@ -1,0 +1,11 @@
+@media screen and (max-width:550px) {
+    .popup__content-mobile {
+        width: 100%;
+        min-height: 80vh;
+        background-color: #fff;
+        border-radius: 10px;
+        position: relative;
+        box-sizing: border-box;
+        padding: 16px 17px;
+    }
+}

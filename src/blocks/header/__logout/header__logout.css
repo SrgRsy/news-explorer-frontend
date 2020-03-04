@@ -1,0 +1,9 @@
+.header__logout {
+    height: 24px;
+    width: 24px;
+    margin-left: 10px;
+}
+
+.header__logout_white{
+    filter:invert(1);
+}

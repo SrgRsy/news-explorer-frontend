@@ -1,0 +1,13 @@
+.popup.popup_is-opened {
+  display: flex;
+}
+
+.popup-signup.popup_is-opened {
+  display: flex;
+}
+.popup-signup-success.popup_is-opened {
+  display: flex;
+}
+.popup__mobile.popup_is-opened {
+  display: flex;
+}

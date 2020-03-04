@@ -1,0 +1,13 @@
+.popup__form {
+  margin-top: 22px;
+}
+
+.popup__form-header {
+  color: #2F71E5;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  margin-top:13px;
+}

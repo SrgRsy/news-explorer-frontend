@@ -1,0 +1,12 @@
+@import url(../no-results/__face/no-results__face.css);
+@import url(../no-results/__face-eye-left/no-results__face-eye-left.css);
+@import url(../no-results/__face-eye-right/no-results__face-eye-right.css);
+@import url(../no-results/__face-mouth/no-results__face-mouth.css);
+@import url(../no-results/__face-vector/no-results__face-vector.css);
+@import url(../no-results/__header/no-results__header.css);
+@import url(../no-results/__description/no-results__discription.css);
+.no-results {
+    max-width: 1440px;
+    height: 374px;
+    padding-top: 86px;
+}

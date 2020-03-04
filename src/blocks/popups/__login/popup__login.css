@@ -1,0 +1,23 @@
+.popup__login {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #000000;
+    margin: 16px 102px 0px;
+}
+
+.popup__login-link {
+    color: #2F71E5;
+}
+
+@media screen and (max-width:550px) {
+    .popup__login {
+        position: absolute;
+        left: 0px;
+        top: 310px;
+        margin: 16px 77px 0px;
+    }
+}

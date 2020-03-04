@@ -1,0 +1,79 @@
+@import url(./__not-logged-in/header__not-logged-in.css);
+@import url(./__navi/header__navi.css);
+@import url(./__logged-in/header__logged-in.css);
+@import url(./__logo/header__logo.css);
+@import url(./__auth-button/header__auth-button.css);
+@import url(./__main-button/header__main-button.css);
+@import url(./__content-header/header__content-header.css);
+@import url(./__content-description/header__content-description.css);
+@import url(./__search-field/header__search-field.css);
+@import url(./__search-field-form-input/header__search-field-form-input.css);
+@import url(./__search-field-button/header__search-field-button.css);
+@import url(./__logo/_black/header_color-black.css);
+@import url(./__main-button/_color-black/header__main-button_color-black.css);
+@import url(./__auth-button/_color-black/header__auth_color-black.css);
+@import url(./__auth-button/_view-more/header__auth-button_view-more.css);
+@import url(./__logout/header__logout.css);
+@import url(./__auth-button-mobile/header__auth-button-moblie.css);
+@import url(./__mobile-main/header__mobile-main.css);
+@import url(./__auth-button-mobile/_main/header__auth-button-moblie_main.css);
+@import url(./__mobile-navi/header__mobile-navi.css);
+@import url(./__mobile-main/_button-show/header__mobile-navi_button-show.css);
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1440px;
+    min-width: 768px;
+    height: 576px;
+    color: #FFFFFF;
+    background-image: url(../../image/unsplash.jpg);
+    background-position: center;
+}
+
+.header__color_black {
+    background-image: none;
+    max-width: 1440px;
+    min-width: 740px;
+    height: 80px;
+    background: #FFFFFF;
+    box-shadow: inset 0px -1px 0px #D1D2D6;
+}
+
+@media screen and (max-width:768px) {
+    .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 768px;
+        min-width: 320px;
+        height: 400px;
+        color: #FFFFFF;
+        background-image: url(../../image/unsplash.jpg);
+        background-position: center;
+    }
+    .header__color_black {
+        background-image: none;
+        max-width: 768px;
+        min-width: 320px;
+        height: 80px;
+    }
+}
+
+@media screen and (max-width:550px) {
+    .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-image: url(../../image/unsplash-mobile.png);
+        max-width: 100%;
+        min-width: 150px;
+        height: 536px;
+        background-size: cover;
+    }
+    .header__color_black {
+        background-image: none;
+        max-width: 100%;
+        height: 56px;
+    }
+}

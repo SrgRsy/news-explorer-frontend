@@ -1,0 +1,27 @@
+.header__search-field-button {
+    color: #FFFFFF;
+    position: absolute;
+    right: 0px;
+    width: 168px;
+    height: 62px;
+    background: #2F71E5;
+    border: none;
+    box-shadow: 0px 5px 15px rgba(14, 26, 57, 0.2);
+    border-radius: 100px;
+    cursor: pointer;
+}
+.header__search-field-button:hover{
+    background: #347EFF;
+}
+.header__search-field-button:active{
+    background: #2A65CC;
+}
+
+
+@media screen and (max-width:550px) {
+    .header__search-field-button {
+        top:176px;
+        width: 288px;
+        height: 56px
+    }
+}

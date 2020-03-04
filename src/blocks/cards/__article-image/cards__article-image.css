@@ -1,0 +1,17 @@
+.cards__article-image {
+    height: 272px;
+    width: 400px;
+    background-image: url(../../../image/card/card.png);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    position: relative;
+}
+
+@media screen and (max-width:768px) {
+    .cards__article-image {
+        height: 150px;
+        width: 224px;
+        background-size: contain;
+        margin:0px;
+    }
+}

@@ -1,0 +1,19 @@
+.header__auth-button_view-more {
+    display: block;
+    color: #030303;
+    width: 288px;
+    height: 64px;
+    border-radius: 80px;
+    margin: 64px auto 80px;
+    background-color: #FFFFFF;
+    border: none;
+}
+
+@media screen and (min-width:320px) and (max-width:768px) {
+    .header__auth-button_view-more {
+        margin: 22px auto 40px;
+        background-color: #FFFFFF;
+        width: 240px;
+        height: 56px;
+    }
+}

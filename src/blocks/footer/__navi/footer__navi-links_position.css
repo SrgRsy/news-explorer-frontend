@@ -1,0 +1,10 @@
+.footer__navi-links_position {
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width:380px) {
+    .footer__navi-links_position {
+        align-items: flex-start;
+    }
+}

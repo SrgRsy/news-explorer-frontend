@@ -1,0 +1,29 @@
+.saved__header {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 24px;
+    color: rgba(26, 27, 34, 0.5);
+    max-width: 354px;
+    height: 24px;
+    margin: 40px 0px 28px 7%;
+}
+
+@media screen and (min-width:320px) and (max-width:768px) {
+    .saved__header {
+        height: 24px;
+        font-size: 14px;
+        line-height: 24px;
+    }
+}
+
+@media screen and (max-width:320px) {
+    .saved__header {
+        height: 24px;
+        font-size: 14px;
+        line-height: 24px;
+        margin: 8px 16px 0px;
+        max-width: 250px;
+    }
+}

@@ -1,0 +1,14 @@
+.cards__article-card {
+    width: 400px;
+    height: 576px;
+    background-color: #fff;
+    border-radius: 10px;
+    min-height: 400px;
+  }
+
+  @media screen and (max-width:768px) {
+    .cards__article-card {
+      width: 224px;
+      height: 420px;
+    }
+}

@@ -1,0 +1,20 @@
+.header__not-logged-in {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+    box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.2);
+    background: rgba(196, 196, 196, 0.01);
+}
+
+@media screen and (min-width:320px) and (max-width:768px) {
+    .header__not-logged-in {
+        display: flex;
+        position: relative;
+        width: 768px;
+        align-items: center;
+        flex-direction: row;
+    }
+}
