@@ -1,24 +1,25 @@
 .header__content-description {
-    max-width: 545px;
+    max-width: 600px;
     padding:0px 16px;
+    margin: 32px auto 64px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 24px;
 }
 
 @media screen and (max-width:768px) {
     .header__content-description {
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 18px;
-        line-height: 24px;
-        max-width: 452px;
+        max-width: 352px;
+        margin: 32px auto 48px;
     }
 }
 
-@media screen and (max-width:320px) {
+@media screen and (max-width:550px) {
     .header__content-description {
         max-width: 270px;
         height: 72px;
-        font-size: 18px;
-        line-height: 24px;
+        margin: 32px auto 0px;
     }
 }

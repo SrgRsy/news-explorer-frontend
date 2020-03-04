@@ -29,7 +29,7 @@ module.exports = {
       {
         test: /\.(png|jpg|gif|ico|svg)$/,
         use: [
-          'file-loader?name=./src/image/[name].[ext]', // указали папку, куда складывать изображения
+          'file-loader?name=./image/[name].[ext]', 
           {
             loader: 'image-webpack-loader',
             options: {
@@ -52,12 +52,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: false,
       template: './src/index.html',
-      filename: 'index.html'
+      filename: './index.html'
     }),
     new HtmlWebpackPlugin({
       inject: false,
       template: './src/news.html',
-      filename: 'news.html'
+      filename: './news.html'
     }),
     new WebpackMd5Hash(),
     new webpack.DefinePlugin({
