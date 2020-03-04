@@ -17,7 +17,7 @@
 <body class="page">
   <header class="header">
     <div class="header__not-logged-in none">
-      <img src="./image/logo.svg" class="header__logo" alt="logo">
+      <img src="<%=require('./image/logo.svg')%>" class="header__logo" alt="logo">
       <div class="header__navi">
         <form action="./index.html">
           <button class="header__main-button">
@@ -32,7 +32,7 @@
     <!-- скрыто меню для мобильного -->
     <div class="header__mobile-main none">
       <div class="header__logged-in">
-        <img src="./image/logo.svg" class="header__logo" alt="logo">
+        <img src="<%=require('./image/logo.svg')%>" class="header__logo" alt="logo">
         <div class="header__navi">
           <button class="header__auth-button-moblie header__auth-button-moblie_main ">
           </button>
@@ -51,12 +51,12 @@
         </form>
         <button class="header__auth-button header__mobile-navi_button-show ">
           Грета
-          <img class="header__logout header__logout_white" src="./image/logout.svg" alt="">
+          <img class="header__logout header__logout_white" src="<%=require('./image/logout.svg')%>" alt="">
         </button>
       </div>
     </div>
     <div class="header__logged-in">
-      <img src="./image/logo.svg" class="header__logo" alt="logo">
+      <img src="<%=require('./image/logo.svg')%>" class="header__logo" alt="logo">
       <div class="header__navi">
         <form action="./index.html">
           <button class="header__main-button">
@@ -70,7 +70,7 @@
         </form>
         <button class="header__auth-button ">
           Грета
-          <img class="header__logout header__logout_white" src="./image/logout.svg" alt="">
+          <img class="header__logout header__logout_white" src="<%=require('./image/logout.svg')%>" alt="">
         </button>
         <!--При открытии меню на телефоне header__auth-button-moblie_opened -->
         <button class="header__auth-button-moblie header__logout_white">
@@ -188,10 +188,10 @@
 
     <section class="no-results">
       <div class="no-results__face">
-        <img class="no-results__face-eye-left" src="./image/no-results/dot.svg" alt="">
-        <img class="no-results__face-eye-right" src="./image/no-results/dot.svg" alt="">
-        <img class="no-results__face-mouth" src="./image/no-results/mouth.svg" alt="">
-        <img class="no-results__face-vector" src="./image/no-results/Vector.svg" alt="">
+        <img class="no-results__face-eye-left" src="<%=require('./image/no-results/dot.svg')%>" alt="">
+        <img class="no-results__face-eye-right" src="<%=require('./image/no-results/dot.svg')%>" alt="">
+        <img class="no-results__face-mouth" src="<%=require('./image/no-results/mouth.svg')%>" alt="">
+        <img class="no-results__face-vector" src="<%=require('./image/no-results/Vector.svg')%>" alt="">
       </div>
       <h3 class="no-results__header">
         Ничего не найдено
