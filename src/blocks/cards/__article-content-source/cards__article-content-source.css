@@ -1,10 +1,12 @@
 .cards__article-content-source {
     color: #B6BCBF;
+    max-width:400px;
     font-family: Roboto Slab;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
     line-height: 20px;
     text-transform: uppercase;
-    margin: 0px 24px 24px;
+    margin-left:24px;
+    display:block;
 }

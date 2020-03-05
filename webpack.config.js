@@ -34,7 +34,8 @@ module.exports = {
             loader: 'image-webpack-loader',
             options: {
               bypassOnDebug: true,
-              disable: true,
+              esModule: false,
+              disable: true
             }
           },
         ]

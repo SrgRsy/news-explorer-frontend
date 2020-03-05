@@ -17,7 +17,7 @@
 <body class="page">
     <header class="header header__color_black">
         <div class="header__logged-in">
-            <img src="<%=require('./image/logo-black.svg')%>" class="header__logo" alt="logo">
+            <img src="<%=require('./image/logo-black.svg').default%>" class="header__logo" alt="logo">
             <div class="header__navi ">
                 <form action="./index.html">
                     <button class="header__main-button header__main-button_color-black">
@@ -31,7 +31,7 @@
                 </form>
                 <button class="header__auth-button header__auth-button_color-black button__effect">
                     Грета
-                    <img class="header__logout" src="<%=require('./image/logout.svg')%>" alt="">
+                    <img class="header__logout" src="<%=require('./image/logout.svg').default%>" alt="">
                 </button>
                 <button class="header__auth-button-moblie ">
                 </button>
@@ -40,7 +40,7 @@
         <!-- скрыто меню для мобильного -->
         <div class="header__mobile-main none">
             <div class="header__logged-in">
-                <img src="<%=require('./image/logo.svg')%>" class="header__logo" alt="logo">
+                <img src="<%=require('./image/logo.svg').default%>" class="header__logo" alt="logo">
                 <div class="header__navi">
                     <button class="header__auth-button-moblie header__auth-button-moblie_main ">
                     </button>
@@ -59,7 +59,7 @@
                 </form>
                 <button class="header__auth-button header__mobile-navi_button-show ">
                     Грета
-                    <img class="header__logout header__logout_white" src="<%=require('./image/logout.svg')%>" alt="">
+                    <img class="header__logout header__logout_white" src="<%=require('./image/logout.svg').default%>" alt="">
                 </button>
             </div>
         </div>
