@@ -20,6 +20,7 @@
 
 @media screen and (max-width:550px) {
     .header__main-button {
-       display:none;
+        height: 56px;
+        display: none;
     }
 }

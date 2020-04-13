@@ -1,6 +1,7 @@
 @import url(../circle-preloader/circle-preloader.css);
 @import url(../preloader/__finding/preloader__finding.css);
 .preloader {
+    display: none;
     padding-top: 80px;
     max-width: 1440px;
     height: 282px;

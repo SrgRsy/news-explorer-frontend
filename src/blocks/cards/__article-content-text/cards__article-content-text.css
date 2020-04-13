@@ -1,21 +1,21 @@
 .cards__article-content-text {
     width: 352px;
+    height: 150px;
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
     line-height: 22px;
     margin: 16px auto 18px;
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: ellipsis;
 }
 
 @media screen and (max-width:768px) {
     .cards__article-content-text {
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
         width: 192px;
         height: 88px;
-        margin:10px 16px 12px;
-       
+        margin: 10px 16px 12px;
     }
 }

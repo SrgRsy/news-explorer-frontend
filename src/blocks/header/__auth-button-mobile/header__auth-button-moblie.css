@@ -12,7 +12,6 @@
     display: none;
 }
 .header__auth-button-moblie_opened{
-    
     background-image: url(../../../image/close.svg);
     width: 16px;
     height: 16px;

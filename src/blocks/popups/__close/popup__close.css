@@ -13,3 +13,13 @@
   right: -26px;
   cursor: pointer;
 }
+
+@media screen and (max-width:320px) {
+  .popup__image-close {
+    width: 26px;
+    position: absolute;
+    top: -26px;
+    right: -26px;
+    cursor: pointer;
+  }
+}

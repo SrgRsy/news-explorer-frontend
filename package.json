@@ -20,6 +20,8 @@
   "homepage": "https://github.com/SrgRsy/news-explorer-frontend#readme",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "core-js": "^3.6.4",
+    "core.js": "^0.4.2",
     "jquery": "^3.4.1",
     "nodemon": "^2.0.2"
   },

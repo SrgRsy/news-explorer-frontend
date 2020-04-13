@@ -19,6 +19,7 @@
   src: url(../vendor/roboto-regular-webfont.woff);
   src: url(../vendor/robotoslab-regular-webfont.woff);
 }
+
 @font-face {
   font-family: Roboto Slab;
   font-style: normal;
@@ -44,6 +45,34 @@
 
 button:focus {
   outline: none;
+}
+
+.error-message {
+  color: #FF3333;
+  font-size: 12px;
+  padding: 0px;
+  opacity: 0;
+  height: 10px;
+}
+
+.error-message-pass {
+  color: #FF3333;
+  font-size: 12px;
+  padding: 0px;
+  opacity: 0;
+}
+.error-message-search {
+  color: #FF3333;
+  position:absolute;
+  top:70px ;
+  left:220px;
+  font-size: 14px;
+  padding: 0px;
+  opacity: 0;
+}
+
+.error-message-active {
+  opacity: 1;
 }
 
 @media screen and (max-width:320px) {

@@ -16,3 +16,22 @@
         display: none;
     }
 }
+
+.popup__mobile-signup {
+    display: none;
+}
+
+@media screen and (max-width:550px) {
+    .popup__mobile-signup {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 90%;
+        background-color: rgba(0, 0, 0, .5);
+        display: flex;
+        align-items: none;
+        justify-content: center;
+        display: none;
+    }
+}

@@ -5,9 +5,47 @@
 .popup-signup.popup_is-opened {
   display: flex;
 }
+
 .popup-signup-success.popup_is-opened {
   display: flex;
 }
+
 .popup__mobile.popup_is-opened {
+  display: flex;
+}
+
+.header__mobile-main-not-logged-in.popup_is-opened {
+  display: flex;
+}
+
+.header__main-button.popup_is-opened {
+  display: flex;
+}
+
+.header__auth-button.popup_is-opened {
+  display: flex;
+}
+
+.popup__mobile-signup.popup_is-opened {
+  display: flex;
+}
+
+.results.popup_is-opened {
+  display: block;
+}
+
+.no-results.popup_is-opened {
+  display: block;
+}
+
+.preloader.popup_is-opened {
+  display: block;
+}
+
+.header__logged-in.popup_is-opened {
+  display: flex;
+}
+
+.header__not-logged-in.popup_is-opened {
   display: flex;
 }

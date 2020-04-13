@@ -11,17 +11,22 @@
     cursor: pointer;
 }
 
+.header__auth-button:active {
+    border: 3px solid #FFFFFF;
+};
+
 @media screen and (max-width:768px) {
     .header__auth-button {
-        width: 100px;
+        width: 120px;
         height: 40px;
     }
 }
 
 @media screen and (max-width:550px) {
     .header__auth-button {
-        width: 288px;
-        height: 56px;
+        width: 120px;
+        height: 40px;
+        margin-top:15px;
         display: none;
         top: 130px;
         right: 0px;
