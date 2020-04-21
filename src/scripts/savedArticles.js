@@ -1,10 +1,10 @@
 import { popupSignupContainer, articleCardList, popupContainer } from './consts.js';
 
-export default class NewsCard {
+export default class SavedArticles {
     constructor(date, header, content, source, image, url) {
-        this.articleCard = this.createNews(date, header, content, source, image, url);
+        this.articleCard = this.createArticle(date, header, content, source, image, url);
     }
-    createNews(date, header, content, source, image, url) {
+    createArticle(date, header, content, source, image, url) {
         const articleCard = document.createElement('div');
         const articleImage = document.createElement('div');
         const articleImageButton = document.createElement('button');
@@ -72,34 +72,12 @@ export default class NewsCard {
 
 
         articleCard.addEventListener('click', (event) => {
-            if (event.target.classList.contains('cards__article-button-chosen')) {
-                console.log('Нажатие');
-                this.saveArticle(date, header, content, source, image, url);
-            };
-        })
+            console.log('нАжатие');
+            if (event.target.classList.contains('cards__article-button-trash')) {
+                event.target.classList.remove('.cards__article-card');
+            }
+        });
 
-    }
-    saveArticle(date, header, content, source, image, url) {
-        fetch('https://mesto-testo.site/articles', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': localStorage.getItem('token')
-            },
-            body: JSON.stringify({
-                "keyword": "Статья",
-                "title": header,
-                "text": content,
-                "date": date,
-                "link": url,
-                "source": source
-            })
-        })
-            .then(res => res.json())
-            .then((data) => {
-                console.log(data);
-            })
-            .catch((err) => res.status(statusCode).send({ message: err.message }))
     }
 };
 

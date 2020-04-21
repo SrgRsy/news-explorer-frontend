@@ -13,6 +13,7 @@
 }
 .header__auth-button-moblie_opened{
     background-image: url(../../../image/close.svg);
+    position: absolute;
     width: 16px;
     height: 16px;
     filter: none;

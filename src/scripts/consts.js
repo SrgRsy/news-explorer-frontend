@@ -1,16 +1,21 @@
-export {noResults,results,formSigninMobile,formSigninMobileEmail,formSignupMobileName,formSignupMobileEmail,formSigninMobilePass,popupClose,searchFieldForm,searchFieldInput,popupSignUpContainerMobile,notloggedInContainer,formSignupName,formSigninEmail,popupSignUpContainer,popupSigUpButton,formSignupPass,formSignupEmail,formSignup,formSignupMobile,formSignupMobilePass,popupSigInButton,loggedInContainer,formSignin,formSigninPass,popupSignupContainer,articleCardList,popupContainer,RegExpEmail,RegExpName,valid};
+export {savedArticleCountHeader,articleCardListCount,popupSignupSuccessContainer,popupSignUpError,popupSignupSuccessLink,popupSignupSuccessClose,errorMessageNameSignup,errorMessageFalse, errorMessageEmailSignupMobile, errorMessagePassSignupMobile, errorMessageNameSignupMobile, errorMessage, errorMessageSearch, errorMessageSignup, errorMessagePass, errorMessagePassMobile, errorMessageEmailMobile, errorMessagePassSignup, mobilePopupSignUp, popupSigInButtonMobile, popupSigUpButtonMobile, mobilePopupSignInButton, mobilePopupSignUpButton, mobileSignInContainer, mobileSignInButton, mobileMenuButton, mobileMenuCloseButton, mobileMenuContainer, popupSignUpClose, popupSignUpButton, logoutButton, popupLinkButton, popupAuthButton, noResults, results, formSigninMobile, formSigninMobileEmail, formSignupMobileName, formSignupMobileEmail, formSigninMobilePass, popupClose, searchFieldForm, searchFieldInput, popupSignUpContainerMobile, notloggedInContainer, formSignupName, formSigninEmail, popupSignUpContainer, popupSigUpButton, formSignupPass, formSignupEmail, formSignup, formSignupMobile, formSignupMobilePass, popupSigInButton, loggedInContainer, formSignin, formSigninPass, popupSignupContainer, articleCardList, popupContainer, RegExpEmail, RegExpName, valid };
+
+const savedArticleCountHeader = document.querySelector('.saved__articles-amount-header');
+const popupSignupSuccessContainer = document.querySelector('.popup-signup-success');
+const popupSignupSuccessClose = popupSignupSuccessContainer.querySelector('.popup__close');
+const popupSignupSuccessLink = popupSignupSuccessContainer.querySelector('.popup__login-link');
 const notloggedInContainer = document.querySelector('.header__not-logged-in');
 const popupContainer = document.querySelector('.popup');
 const popupAuthButton = document.querySelector('.header__auth-button');
-
 const popupClose = popupContainer.querySelector('.popup__close');
-
+const popupSignupContainer = document.querySelector('.popup-signup');
 const popupSignUpContainerMobile = document.querySelector('.popup__mobile-signup');
 const loggedInContainer = document.querySelector('.header__logged-in');
 const popupSignUpContainer = document.querySelector('.popup-signup');
-
-const popupSignupContainer = document.querySelector('.popup-signup');
+const popupSignUpError = popupSignUpContainer.querySelector('.error-message-signup');
+const popupLinkButton = popupSignUpContainer.querySelector('.popup__login-signin');
 const articleCardList = document.querySelector('.cards__card-list');
+const articleCardListCount = articleCardList.querySelectorAll('.cards__article-card').length;
 const formSignin = document.forms.signin;
 const formSignup = document.forms.signup;
 const formSignupEmail = formSignup.elements.emailSignup;
@@ -23,6 +28,31 @@ const formSignupMobilePass = formSignupMobile.elements.password;
 const popupSigUpButton = popupSignUpContainer.querySelector('.popup__button');
 const noResults = document.querySelector('.no-results');
 const results = document.querySelector('.results');
+const logoutButton = loggedInContainer.querySelector('.header__auth-button');
+const popupSignUpButton = popupContainer.querySelector('.popup__login-link');
+const popupSignUpClose = popupSignupContainer.querySelector('.popup__close');
+const mobileMenuContainer = document.querySelector('.header__mobile-main-not-logged-in');
+const mobileMenuButton = document.querySelector('.header__auth-button-moblie');
+const mobileMenuCloseButton = mobileMenuContainer.querySelector('.header__auth-button-moblie_main');
+const mobileSignInContainer = document.querySelector('.popup__mobile');
+const mobileSignInButton = mobileMenuContainer.querySelector('.header__auth-button');
+const mobilePopupSignUpButton = mobileSignInContainer.querySelector('.popup__login-link');
+const mobilePopupSignUp = document.querySelector('.popup__mobile-signup');
+const mobilePopupSignInButton = mobilePopupSignUp.querySelector('.popup__login-link');
+const popupSigUpButtonMobile = mobilePopupSignUp.querySelector('.popup__button');
+const popupSigInButtonMobile = mobileSignInContainer.querySelector('.popup__button');
+const errorMessage = popupContainer.querySelector('.error-message');
+const errorMessageSearch = document.querySelector('.error-message-search');
+const errorMessageSignup = popupSignUpContainer.querySelector('.error-message');
+const errorMessagePass = popupContainer.querySelector('.error-message-pass');
+const errorMessageFalse = popupContainer.querySelector('.error-message-false');
+const errorMessagePassMobile = mobileSignInContainer.querySelector('.error-message-mobile-pass');
+const errorMessageEmailMobile = mobileSignInContainer.querySelector('.error-message-mobile-email');
+const errorMessagePassSignup = popupSignUpContainer.querySelector('.error-message-pass');
+const errorMessageNameSignup = popupSignUpContainer.querySelector('.error-message-name');
+const errorMessageEmailSignupMobile = popupSignUpContainerMobile.querySelector('.error-message');
+const errorMessagePassSignupMobile = popupSignUpContainerMobile.querySelector('.error-message-pass');
+const errorMessageNameSignupMobile = popupSignUpContainerMobile.querySelector('.error-message-name');
 
 
 const formSignupName = formSignup.elements.userSignup;
@@ -48,3 +78,8 @@ const valid = {
     notEmail: 'Почта указана неверно',
     wrongName: 'Перввый символ должен быть прописной.'
 };
+
+
+
+
+

@@ -8,7 +8,6 @@
     <meta name="description" content="Страница для поиска новостей.">
     <meta name="keywords" content="Новости, статьи.">
     <meta name="author" content="Рясный Сергей">
-    <link rel="stylesheet" href="./blocks/normalize/normalize.css">
     <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.main.css %>">
     <link rel="icon" href="./image/favicon/N.png">
     <title>Сохраненные статьи</title>
@@ -16,33 +15,28 @@
 
 <body class="page">
     <header class="header header__color_black">
-        <div class="header__logged-in">
-            <img src="<%=require('./image/logo-black.svg').default%>" class="header__logo" alt="logo">
-            <div class="header__navi ">
+        <div class="header__not-logged-in ">
+            <img src="<%=require('./image/logo-black.svg').default%>" class=" header__logo" alt="logo">
+            <div class="header__navi">
                 <form action="./index.html">
                     <button class="header__main-button header__main-button_color-black">
                         Главная
                     </button>
                 </form>
-                <form action="./news.html">
-                    <button class="header__main-button header__mobile-navi_button-show header__main-button_color-black">
-                        Сохраненные статьи
-                    </button>
-                </form>
-                <button class="header__auth-button header__auth-button_color-black button__effect">
-                    Грета
-                    <img class="header__logout" src="<%=require('./image/logout.svg').default%>" alt="">
+                <button class="header__auth-button header__auth-button_color-black">
+                    Авторизоваться
                 </button>
-                <button class="header__auth-button-moblie ">
+                <button class="header__auth-button-moblie header__logout_white">
                 </button>
             </div>
         </div>
         <!-- скрыто меню для мобильного -->
-        <div class="header__mobile-main none">
-            <div class="header__logged-in">
-                <img src="<%=require('./image/logo.svg').default%>" class="header__logo" alt="logo">
+        <div class="header__mobile-main-logged-in">
+            <div class="header__logged-in-mobi">
+                <img src="<%=require('./image/logo-black.svg').default%>" class="header__logo" alt="logo">
                 <div class="header__navi">
-                    <button class="header__auth-button-moblie header__auth-button-moblie_main ">
+                    <button
+                        class="header__auth-button-moblie header__auth-button-moblie_main header__main-button_color-black">
                     </button>
                 </div>
             </div>
@@ -57,17 +51,213 @@
                         Сохраненные статьи
                     </button>
                 </form>
-                <button class="header__auth-button header__mobile-navi_button-show ">
+                <button class="header__auth-button header__mobile-navi_button-show header__auth-button_color-black">
                     Грета
                     <img class="header__logout header__logout_white" src="<%=require('./image/logout.svg').default%>"
                         alt="">
                 </button>
             </div>
         </div>
+        <!-- скрыто меню для мобильного -->
+        <div class="header__mobile-main-not-logged-in">
+            <button
+                class="header__auth-button-moblie header__auth-button-moblie_main header__auth-button-moblie_opened header__auth-button_color-black">
+            </button>
+            <div class="header__not-logged-in">
+                <img src="<%=require('./image/logo-black.svg').default%>" class="header__logo" alt="logo">
+                <div class="header__navi">
+                    <button class="header__auth-button-moblie header__auth-button-moblie_main ">
+                    </button>
+                </div>
+            </div>
+            <div class="header__mobile-navi">
+                <form action="./index.html">
+                    <button class="header__main-button header__main-button_color-black">
+                        Главная
+                    </button>
+                </form>
+                <button class="header__auth-button header__auth-button_color-black">
+                    Авторизоваться
+                </button>
+            </div>
+        </div>
+        <div class="header__logged-in">
+            <img src="<%=require('./image/logo-black.svg').default%>" class="header__logo" alt="logo">
+            <div class="header__navi">
+                <form action="./index.html">
+                    <button class="header__main-button header__main-button_color-black">
+                        Главная
+                    </button>
+                </form>
+                <form action="./news.html">
+                    <button class="header__main-button header__mobile-navi_button-show header__main-button_color-black">
+                        Сохраненные статьи
+                    </button>
+                </form>
+                <button class="header__auth-button header__auth-button_color-black">
+                    <span class="header__auth-button-name">
+
+                    </span>
+                    <img class="header__logout header__logout_white" src="<%=require('./image/logout.svg').default%>"
+                        alt="">
+                </button>
+                <!--При открытии меню на телефоне header__auth-button-moblie_opened -->
+                <button class="header__auth-button-moblie header__logout_white">
+                </button>
+            </div>
+        </div>
+
+
+        <div class="header__search-field none">
+            <form class="header__search-field-form" name="search">
+                <input type="text" name="searchField" class="header__search-field-form-input" placeholder="Политика">
+                <span class="error-message-search">Введите ключевое слово</span>
+            </form>
+        </div>
     </header>
 
 
     <main class="content">
+        <section class="popups">
+            <!-- Попапы скрыты,добавить popup_is-opened -->
+            <div class="popup__mobile">
+                <div class="popup__content-mobile">
+                    <img src="./image/close.svg" alt="" class="popup__close">
+                    <h3 class="popup__title">Вход</h3>
+                    <form class="popup__form" name="signinMobile">
+                        <div class="popup__form-header">
+                            Email
+                        </div>
+                        <input type="email" min="2" max="30" name="email" class="popup__input"
+                            placeholder="Введите почту" required>
+                        <span class="error-message-mobile-email">Непрвельный формат email</span>
+                        <div class="popup__form-header">
+                            Пароль
+                        </div>
+                        <input type="password" name="password" class="popup__input" placeholder="Введите пароль"
+                            required>
+                        <span class="error-message-mobile-pass">Непрвельный формат email</span>
+                        <button class="button popup__button input__btn_disabled" disabled="true">Войти</button>
+                    </form>
+                    <div class="popup__login">
+                        или <span class="popup__login-link">
+                            Зарегистрироваться
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="popup__mobile-signup">
+                <div class="popup__content-mobile">
+                    <img src="./image/close.svg" alt="" class="popup__close">
+                    <h3 class="popup__title">Регистрация</h3>
+                    <form class="popup__form" name="signupMobile">
+                        <div class="popup__form-header">
+                            Email
+                        </div>
+                        <input type="email" min="2" max="30" name="email" class="popup__input"
+                            placeholder="Введите почту" required>
+                        <span class="error-message">Непрвельный формат email</span>
+                        <div class="popup__form-header">
+                            Пароль
+                        </div>
+                        <input type="password" name="password" class="popup__input" placeholder="Введите пароль"
+                            required>
+                        <span class="error-message-pass">Непрвельный формат email</span>
+                        <div class="popup__form-header">
+                            Имя
+                        </div>
+                        <input type="text" name="userSignup" class="popup__input" placeholder="Введите своё имя"
+                            required>
+                        <span class="error-message-name ">Error</span>
+                        <div class="error-message-signup">
+                            Такой пользователь уже есть
+                        </div>
+                        <button class="button popup__button popup__button-signup_mobile input__btn_disabled"
+                            disabled="true">Зарегистрироваться</button>
+                    </form>
+                    <div class="popup__login popup__login_mobile">
+                        или <span class="popup__login-link ">
+                            Войти
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="popup">
+                <div class="popup__content">
+                    <img src="./image/close.svg" alt="" class="popup__close">
+                    <h3 class="popup__title">Вход</h3>
+                    <form class="popup__form" name="signin">
+                        <div class="popup__form-header">
+                            Email
+                        </div>
+                        <input type="text" name="emailSignin" class="popup__input" placeholder="Введите почту" required>
+                        <span class="error-message">Error</span>
+                        <div class="popup__form-header">
+                            Пароль
+                        </div>
+                        <input type="password" min="8" max="30" name="passwordSignin" class="popup__input"
+                            placeholder="Введите пароль" required>
+                        <span class="error-message-pass">Error</span>
+                        <button class="button popup__button input__btn_disabled" disabled="true">Войти</button>
+                    </form>
+                    <div class="popup__login">
+                        или <span class="popup__login-link">
+                            Зарегистрироваться
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="popup-signup">
+                <div class="popup__content">
+                    <img src="./image/close.svg" alt="" class="popup__close">
+                    <h3 class="popup__title">Регистрация</h3>
+                    <form class="popup__form" name="signup">
+                        <div class="popup__form-header">
+                            Email
+                        </div>
+                        <input type="text" min="2" max="30" name="emailSignup" class="popup__input"
+                            placeholder="Введите почту" required>
+                        <span class="error-message ">Error</span>
+                        <div class="popup__form-header">
+                            Пароль
+                        </div>
+                        <input type="password" min="8" max="30" name="passwordSignup" class="popup__input"
+                            placeholder="Введите пароль" required>
+                        <span class="error-message-pass">Error</span>
+                        <div class="popup__form-header">
+                            Имя
+                        </div>
+                        <input type="text" name="userSignup" class="popup__input" placeholder="Введите своё имя"
+                            required>
+                        <span class="error-message-name ">Error</span>
+                        <div class="error-message-signup">
+                            Такой пользователь уже есть
+                        </div>
+                        <button class="button popup__button input__btn_disabled"
+                            disabled="true">Зарегистрироваться</button>
+                    </form>
+                    <div class="popup__login">
+                        или <span class="popup__login-signin">
+                            Войти
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="popup-signup-success ">
+                <div class="popup__content popup__content_signup-success">
+                    <img src="./image/close.svg" alt="" class="popup__close">
+                    <h3 class="popup__title popup__title_margin">Пользователь успешно зарегистрирован!</h3>
+                    <span class="popup__login-link">
+                        Выполнить вход
+                    </span>
+                </div>
+            </div>
+        </section>
+
+
         <section class="saved">
             <h2 class="saved__header">
                 Сохраненные статьи
@@ -110,105 +300,11 @@
                         </span>
                     </div>
                 </div>
+                
             </div>
 
         </section>
-        <section class="popups">
-            <!-- Попапы скрыты,добавить popup_is-opened -->
-            <div class="popup__mobile">
-                <div class="popup__content-mobile">
-                    <img src="./image/close.svg" alt="" class="popup__close">
-                    <h3 class="popup__title">Вход</h3>
-                    <form class="popup__form" name="signin">
-                        <div class="popup__form-header">
-                            Email
-                        </div>
-                        <input type="email" min="2" max="30" name="email" class="popup__input"
-                            placeholder="Введите почту">
-                        <span class="error-message">Непрвельный формат email</span>
-                        <div class="popup__form-header">
-                            Пароль
-                        </div>
-                        <input type="password" name="password" class="popup__input" placeholder="Введите пароль">
-                        <button type="submit" class="button popup__button input__btn_disabled"
-                            disabled="true">Войти</button>
-                    </form>
-                    <div class="popup__login">
-                        или <span class="popup__login-link">
-                            Зарегистрироваться
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="popup">
-                <div class="popup__content">
-                    <img src="./image/close.svg" alt="" class="popup__close">
-                    <h3 class="popup__title">Вход</h3>
-                    <form class="popup__form" name="signin">
-                        <div class="popup__form-header">
-                            Email
-                        </div>
-                        <input type="email" min="2" max="30" name="email" class="popup__input"
-                            placeholder="Введите почту">
-                        <span class="error-message">Непрвельный формат email</span>
-                        <div class="popup__form-header">
-                            Пароль
-                        </div>
-                        <input type="password" name="password" class="popup__input" placeholder="Введите пароль">
-                        <button type="submit" class="button popup__button input__btn_disabled"
-                            disabled="true">Войти</button>
-                    </form>
-                    <div class="popup__login">
-                        или <span class="popup__login-link">
-                            Зарегистрироваться
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="popup-signup">
-                <div class="popup__content">
-                    <img src="./image/close.svg" alt="" class="popup__close">
-                    <h3 class="popup__title">Регистрация</h3>
-                    <form class="popup__form" name="signup">
-                        <div class="popup__form-header">
-                            Email
-                        </div>
-                        <input type="email" min="2" max="30" name="email" class="popup__input"
-                            placeholder="Введите почту">
-                        <span class="error-message">Непрвельный формат email</span>
-                        <div class="popup__form-header">
-                            Пароль
-                        </div>
-                        <input type="password" name="password" class="popup__input" placeholder="Введите пароль">
-                        <span class="error-message">Непрвельный формат пароля</span>
-                        <div class="popup__form-header">
-                            Имя
-                        </div>
-                        <input type="text" name="user" class="popup__input" placeholder="Введите своё имя">
-                        <div class="error-message-signup">
-                            Такой пользователь уже есть
-                        </div>
-                        <button type="submit" class="button popup__button input__btn_disabled"
-                            disabled="true">Зарегистрироваться</button>
-                    </form>
-                    <div class="popup__login">
-                        или <span class="popup__login-link">
-                            Войти
-                        </span>
-                    </div>
-                </div>
-            </div>
 
-            <div class="popup-signup-success">
-                <div class="popup__content popup__content_signup-success">
-                    <img src="./image/close.svg" alt="" class="popup__close">
-                    <h3 class="popup__title popup__title_margin">Пользователь успешно зарегистрирован!</h3>
-                    <span class="popup__login-link">
-                        Выполнить вход
-                    </span>
-                </div>
-            </div>
-        </section>
     </main>
 
 
