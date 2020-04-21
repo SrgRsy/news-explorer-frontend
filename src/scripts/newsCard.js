@@ -1,4 +1,4 @@
-import {popupSignupContainer,articleCardList,popupContainer} from './consts.js';
+import { popupSignupContainer, articleCardList, popupContainer,searchFieldInput } from './consts.js';
 
 export default class NewsCard {
     constructor(date, header, content, source, image, url) {
@@ -14,7 +14,7 @@ export default class NewsCard {
         const articleContentText = document.createElement('p');
         const articleContentSource = document.createElement('a');
 
-        if (localStorage.getItem("name")) {
+        if (localStorage.getItem("token")) {
             const articleImageButtonSave = document.createElement('button');
             articleImageButtonSave.classList.add('cards__article-button-chosen');
             articleImage.appendChild(articleImageButtonSave);
@@ -24,9 +24,17 @@ export default class NewsCard {
             articleImageButtonSignin.classList.add('button__effect');
             articleImageButtonSignin.textContent = "Войдите, чтобы сохранять статьи."
             articleImage.appendChild(articleImageButtonSignin);
-            signIn(articleImageButton);
-            signIn(articleImageButtonSignin);
 
+
+            articleImageButton.addEventListener('click', function () {
+                popupSignupContainer.classList.remove('popup_is-opened');
+                popupContainer.classList.add('popup_is-opened');
+            });
+
+            articleImageButtonSignin.addEventListener('click', function () {
+                popupSignupContainer.classList.remove('popup_is-opened');
+                popupContainer.classList.add('popup_is-opened');
+            });
 
 
         }
@@ -54,7 +62,7 @@ export default class NewsCard {
         articleCardList.appendChild(articleCard);
 
 
-        articleImage.style.backgroundImage = image;
+        articleImage.style.backgroundImage =  "url(" + image + ")";
         articleContentDate.textContent = date;
         articleContentHeader.textContent = header;
         articleContentText.textContent = content;
@@ -65,16 +73,33 @@ export default class NewsCard {
 
         articleCard.addEventListener('click', (event) => {
             if (event.target.classList.contains('cards__article-button-chosen')) {
-                event.target.classList.toggle('.cards__article-button-chosen_saved');
-            }
-        });
-    }
-};
+                event.target.classList.add('cards__article-button-chosen_saved');
+                this.saveArticle(date, header, content, source, image, url);
+            };
+        })
 
-const signIn = function (container) {
-    container.addEventListener('click', function () {
-        popupSignupContainer.classList.remove('popup_is-opened');
-        popupContainer.classList.add('popup_is-opened');
-    });
+    }
+    saveArticle(date, header, content, source, image, url) {
+        fetch('https://mesto-testo.site/articles', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('token')
+            },
+            body: JSON.stringify({
+                "keyword": image,
+                "title": header,
+                "text": content,
+                "date": date,
+                "link": url,
+                "source": source,
+            })
+        })
+            .then(res => res.json())
+            .then((data) => {
+                console.log(data);
+            })
+            .catch((err) => res.status(statusCode).send({ message: err.message }))
+    }
 };
 

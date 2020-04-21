@@ -9,4 +9,7 @@
     text-transform: uppercase;
     margin-left:24px;
     display:block;
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: ellipsis;
 }

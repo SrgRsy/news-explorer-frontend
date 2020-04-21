@@ -58,6 +58,8 @@
     </div>
     <!-- скрыто меню для мобильного -->
     <div class="header__mobile-main-not-logged-in">
+      <button class="header__auth-button-moblie header__auth-button-moblie_main header__auth-button-moblie_opened">
+      </button>
       <div class="header__not-logged-in">
         <img src="<%=require('./image/logo.svg').default%>" class="header__logo" alt="logo">
         <div class="header__navi">
@@ -120,16 +122,17 @@
 
   <main class="content">
     <section class="results">
-      <div class="preloader">
+      <h3 class="results__articles-amount-header results__articles-amount-header_results">
+        Результаты поиска
+      </h3>
+      <div class="preloader popup_is-opened">
         <i class="circle-preloader"></i>
         <h3 class="preloader__finding">
           Идет поиск новостей...
         </h3>
       </div>
-      <h3 class="results__articles-amount-header results__articles-amount-header_results">
-        Результаты поиска
-      </h3>
       <div class="cards__card-list">
+
         <!-- <div class="cards__article-card">
           <div class="cards__article-image">
             <button class="cards__article-button-chosen button__effect ">
@@ -176,6 +179,8 @@
       <span class="no-results__discription">
         К сожалению, по вашему запросу ничего не найдено.
       </span>
+      <h3 class="saved__articles-amount-header cards__card-list-saved none">
+      </h3>
     </section>
     <section class="about-author">
       <img src="<%=require('./image/avatar.png').default%>" class="about-author__photo" alt="author">
@@ -199,7 +204,7 @@
         <div class="popup__content-mobile">
           <img src="./image/close.svg" alt="" class="popup__close">
           <h3 class="popup__title">Вход</h3>
-          <form method="POST" action="https://mesto-testo.site/signin" class="popup__form" name="signinMobile">
+          <form class="popup__form" name="signinMobile">
             <div class="popup__form-header">
               Email
             </div>
@@ -224,7 +229,7 @@
         <div class="popup__content-mobile">
           <img src="./image/close.svg" alt="" class="popup__close">
           <h3 class="popup__title">Регистрация</h3>
-          <form method="POST" action="https://mesto-testo.site/signup"  class="popup__form" name="signupMobile">
+          <form class="popup__form" name="signupMobile">
             <div class="popup__form-header">
               Email
             </div>
@@ -271,6 +276,7 @@
               placeholder="Введите пароль" required>
             <span class="error-message-pass">Error</span>
             <button type="submit" class="button popup__button input__btn_disabled" disabled="true">Войти</button>
+            <span class="error-message-false">Error</span>
           </form>
           <div class="popup__login">
             или <span class="popup__login-link">
@@ -283,7 +289,7 @@
         <div class="popup__content">
           <img src="./image/close.svg" alt="" class="popup__close">
           <h3 class="popup__title">Регистрация</h3>
-          <form method="POST" action="https://mesto-testo.site/signup" class="popup__form" name="signup">
+          <form class="popup__form" name="signup">
             <div class="popup__form-header">
               Email
             </div>

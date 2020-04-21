@@ -21,7 +21,7 @@ export default class CardList {
             const header = item.title;
             const content = item.description;
             const source = item.source.name;
-            const image = "url(" + item.urlToImage + ")";
+            const image = item.urlToImage ;
             const url = item.url;
             this.container = new NewsCard(date, header, content, source, image, url);
         })

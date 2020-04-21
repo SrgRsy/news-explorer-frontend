@@ -55,17 +55,28 @@ button:focus {
   height: 10px;
 }
 
+.error-message-false {
+  position:relative;
+  color: #FF3333;
+  font-size: 14px;
+  padding: 0px;
+  opacity: 0;
+  height: 10px;
+  left: 100px;
+}
+
 .error-message-pass {
   color: #FF3333;
   font-size: 12px;
   padding: 0px;
   opacity: 0;
 }
+
 .error-message-search {
   color: #FF3333;
-  position:absolute;
-  top:70px ;
-  left:220px;
+  position: absolute;
+  top: 70px;
+  left: 220px;
   font-size: 14px;
   padding: 0px;
   opacity: 0;

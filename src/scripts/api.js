@@ -1,5 +1,5 @@
 import CardList from './cardList.js'
-import {articleCardList} from './consts.js';
+import { articleCardList } from './consts.js';
 
 
 export default class Api {
@@ -27,8 +27,6 @@ export default class Api {
                     new CardList(articleCardList, result.articles);
                 }
             })
-            .catch((err) => {
-                console.log(err);
-            });
+            .catch((err) => res.status(statusCode).send({ message: err.message }))
     };
 }

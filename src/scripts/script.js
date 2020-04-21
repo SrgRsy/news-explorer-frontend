@@ -1,83 +1,19 @@
 
 import '../pages/index.css';
 import Api from './api.js';
+import SavedArticles from './savedArticles.js';
+import ApiSignin from './apiSignin.js'
+import ApiSignup from './apiSignup.js'
 import Popup from './popup.js';
 import Validation from './validation.js';
-import {formSigninMobile,results,formSignupMobileName,formSignupMobileEmail,formSigninMobileEmail,formSigninMobilePass,searchFieldForm,searchFieldInput,popupClose,popupSignUpContainerMobile,notloggedInContainer,formSignupName,popupSigUpButton,popupSignUpContainer,formSignupPass,formSignupMobile,formSignupEmail,formSignupMobilePass,popupSignupContainer,popupContainer,loggedInContainer,formSigninEmail,popupSigInButton,formSigninPass} from './consts.js';
+import { RegExpEmail, errorMessageNameSignup, errorMessageEmailSignupMobile, errorMessagePassSignupMobile, errorMessageNameSignupMobile, errorMessage, errorMessageSearch, errorMessageSignup, errorMessagePass, errorMessagePassMobile, errorMessageEmailMobile, errorMessagePassSignup, mobilePopupSignUpButton, mobilePopupSignUp, popupSigInButtonMobile, mobilePopupSignInButton, popupSigUpButtonMobile, mobileSignInContainer, mobileSignInButton, mobileMenuButton, mobileMenuCloseButton, mobileMenuContainer, popupSignUpClose, popupSignUpButton, logoutButton, popupLinkButton, formSigninMobile, results, formSignupMobileName, formSignupMobileEmail, formSigninMobileEmail, popupAuthButton, formSigninMobilePass, searchFieldForm, searchFieldInput, popupClose, popupSignUpContainerMobile, notloggedInContainer, formSignupName, popupSigUpButton, popupSignUpContainer, formSignupPass, formSignupMobile, formSignupEmail, formSignupMobilePass, popupSignupContainer, popupContainer, loggedInContainer, formSigninEmail, popupSigInButton, formSigninPass } from './consts.js';
 
 
-// localStorage.setItem("name","Вася");
-console.log(localStorage.getItem("name"));
-
-
-const popupAuthButton = document.querySelector('.header__auth-button');
-const logoutButton = loggedInContainer.querySelector('.header__auth-button');
-const popupSignUpButton = popupContainer.querySelector('.popup__login-link');
-
-const popupSignUpClose = popupSignupContainer.querySelector('.popup__close');
-const mobileMenuContainer = document.querySelector('.header__mobile-main-not-logged-in');
-const mobileMenuButton = document.querySelector('.header__auth-button-moblie');
-const mobileMenuCloseButton = mobileMenuContainer.querySelector('.header__auth-button-moblie_main');
-const mobileSignInContainer = document.querySelector('.popup__mobile');
-const mobileSignInButton = mobileMenuContainer.querySelector('.header__auth-button');
-const mobilePopupSignUpButton = mobileSignInContainer.querySelector('.popup__login-link');
-const mobilePopupSignUp = document.querySelector('.popup__mobile-signup');
-const mobilePopupSignInButton = mobilePopupSignUp.querySelector('.popup__login-link');
-const popupSigUpButtonMobile = mobilePopupSignUp.querySelector('.popup__button');
-const popupSigInButtonMobile = mobileSignInContainer.querySelector('.popup__button');
-
-
-const errorMessage = popupContainer.querySelector('.error-message');
-const errorMessageSearch = document.querySelector('.error-message-search');
-const errorMessageSignup = popupSignUpContainer.querySelector('.error-message');
-const errorMessagePass = popupContainer.querySelector('.error-message-pass');
-const errorMessagePassMobile = mobileSignInContainer.querySelector('.error-message-mobile-pass');
-const errorMessageEmailMobile = mobileSignInContainer.querySelector('.error-message-mobile-email');
-const errorMessagePassSignup = popupSignUpContainer.querySelector('.error-message-pass');
-const errorMessageNameSignup = popupSignUpContainer.querySelector('.error-message-name');
-const errorMessageEmailSignupMobile = popupSignUpContainerMobile.querySelector('.error-message');
-const errorMessagePassSignupMobile = popupSignUpContainerMobile.querySelector('.error-message-pass');
-const errorMessageNameSignupMobile = popupSignUpContainerMobile.querySelector('.error-message-name');
-
-
-
-
-const mobileSignInPopup = new Popup(mobileSignInContainer, popupSignUpClose, mobileSignInButton);
-const signupPopup = new Popup(popupSignupContainer, popupSignUpClose, popupSignUpButton);
-const authPopup = new Popup(popupContainer, popupClose, popupAuthButton);
-const monileMenuPopup = new Popup(mobileMenuContainer, mobileMenuCloseButton, mobileMenuButton);
-const validation = new Validation();
-
-
-window.onload = function () {
-    document.querySelector('.preloader').classList.add('popup_is-opened');
-    window.setTimeout(function () {
-        document.querySelector('.preloader').classList.remove('popup_is-opened');
-    }, 500);
-}
-
-
-if (localStorage.getItem("token")) {
-    loggedInContainer.classList.add('popup_is-opened');
-    loggedInContainer.querySelector('.header__auth-button-name').textContent = localStorage.getItem("token");
-} else if (!localStorage.getItem("token")) {
-    notloggedInContainer.classList.add('popup_is-opened');
-};
-
-
-//Работа с Апи, отрисовка карточек
-searchFieldForm.addEventListener('submit', function (event) {
-    if (!searchFieldInput.value) {
-        validation.checkField(searchFieldInput, errorMessageSearch);
-        event.preventDefault();
-    } else {
-        results.classList.add('popup_is-opened');
-        new Api(searchFieldForm.elements.searchField.value);
-        event.preventDefault();
-    }
-});
 //Открытие/закрытие Popup 
-
+popupLinkButton.addEventListener('click', function () {
+    popupSignupContainer.classList.remove('popup_is-opened');
+    popupContainer.classList.add('popup_is-opened');
+});
 popupSignUpButton.addEventListener('click', function () {
     popupContainer.classList.remove('popup_is-opened')
 });
@@ -96,6 +32,44 @@ mobilePopupSignInButton.addEventListener('click', function () {
     mobilePopupSignUp.classList.remove('popup_is-opened');
     mobileSignInContainer.classList.add('popup_is-opened');
 });
+
+
+new Popup(mobileSignInContainer, popupSignUpClose, mobileSignInButton);
+new Popup(popupSignupContainer, popupSignUpClose, popupSignUpButton);
+new Popup(popupContainer, popupClose, popupAuthButton);
+new Popup(mobileMenuContainer, mobileMenuCloseButton, mobileMenuButton);
+const validation = new Validation();
+
+
+//прелоудер
+window.onload = function () {
+    window.setTimeout(function () {
+        document.querySelector('.preloader').classList.remove('popup_is-opened');
+    }, 4000);
+}
+
+
+if (localStorage.getItem("token")) {
+    loggedInContainer.classList.add('popup_is-opened');
+    new SavedArticles();
+    loggedInContainer.querySelector('.header__auth-button-name').textContent = localStorage.getItem('name');
+} else if (!localStorage.getItem("token")) {
+    notloggedInContainer.classList.add('popup_is-opened');
+};
+
+
+//Работа с Апи, отрисовка карточек
+searchFieldForm.addEventListener('submit', function (event) {
+    if (!searchFieldInput.value) {
+        validation.checkField(searchFieldInput, errorMessageSearch);
+        event.preventDefault();
+    } else {
+        results.classList.add('popup_is-opened');
+        new Api(searchFieldForm.elements.searchField.value);
+        event.preventDefault();
+    }
+});
+
 
 //Валидация поля поиска статей
 searchFieldInput.addEventListener('input', function () {
@@ -159,56 +133,31 @@ formSignupMobile.addEventListener('input', function () {
         popupSigUpButtonMobile.classList.add('input__btn_disabled');
     }
 });
-popupSigUpButton.addEventListener('submit', function () {
-    fetch('https://mesto-testo.site//signup', {
-        method: 'POST',
-        body: JSON.stringify({
-            email: formSignupEmail.value,
-            password: formSignupPass.value,
-            name:formSignupName.value
-        })
-    })
-        .then(res => res.json())
-        .then((data) => {
-            // сохраняем токен
-            console.log("Зарегистрирован");
-            // localStorage.setItem('token', data.token);
-        });
+
+popupSigUpButton.addEventListener('click', function (event) {
+    new ApiSignup(formSignupEmail, formSignupPass, formSignupName);
+    event.preventDefault();
 });
-popupSigInButton.addEventListener('submit', function () {
-    fetch('https://mesto-testo.site//signin', {
-        method: 'POST',
-        body: JSON.stringify({
-            email: formSigninEmail.value,
-            password: formSignupPass.value
-        })
-    })
-        .then(res => res.json())
-        .then((data) => {
-            // сохраняем токен
-            console.log(mailInput.value);
-            localStorage.setItem('token', data.token);
-        });
+
+popupSigInButton.addEventListener('click', function (event) {
+    new ApiSignin(formSigninEmail, formSigninPass);
+    event.preventDefault();
 });
-popupSigInButtonMobile.addEventListener('submit', function () {
-    fetch('https://mesto-testo.site//signin', {
-        method: 'POST',
-        body: JSON.stringify({
-            email: formSformSigninMobileEmailigninEmail.value,
-            password: formSigninMobilePass.value
-        })
-    })
-        .then(res => res.json())
-        .then((data) => {
-            // сохраняем токен
-            console.log(mailInput.value);
-            localStorage.setItem('token', data.token);
-        });
+
+popupSigInButtonMobile.addEventListener('click', function (event) {
+    new ApiSignin(formSignupMobileEmail, formSigninMobilePass);
+    event.preventDefault();
 });
+
 
 logoutButton.addEventListener('click', function () {
-    console.log('Работает');
+    localStorage.removeItem("token");
     localStorage.removeItem("name");
-    location.reload(true)
-
+    localStorage.removeItem("id");
+    location="../index.html";
 });
+
+
+
+
+

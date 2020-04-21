@@ -49,3 +49,7 @@
 .header__not-logged-in.popup_is-opened {
   display: flex;
 }
+
+.popup-signup-success.popup_is-opened {
+  display: flex;
+}
