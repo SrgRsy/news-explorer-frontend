@@ -6,7 +6,7 @@ import ApiSignin from './apiSignin.js'
 import ApiSignup from './apiSignup.js'
 import Popup from './popup.js';
 import Validation from './validation.js';
-import { RegExpEmail, errorMessageNameSignup, errorMessageEmailSignupMobile, errorMessagePassSignupMobile, errorMessageNameSignupMobile, errorMessage, errorMessageSearch, errorMessageSignup, errorMessagePass, errorMessagePassMobile, errorMessageEmailMobile, errorMessagePassSignup, mobilePopupSignUpButton, mobilePopupSignUp, popupSigInButtonMobile, mobilePopupSignInButton, popupSigUpButtonMobile, mobileSignInContainer, mobileSignInButton, mobileMenuButton, mobileMenuCloseButton, mobileMenuContainer, popupSignUpClose, popupSignUpButton, logoutButton, popupLinkButton, formSigninMobile, results, formSignupMobileName, formSignupMobileEmail, formSigninMobileEmail, popupAuthButton, formSigninMobilePass, searchFieldForm, searchFieldInput, popupClose, popupSignUpContainerMobile, notloggedInContainer, formSignupName, popupSigUpButton, popupSignUpContainer, formSignupPass, formSignupMobile, formSignupEmail, formSignupMobilePass, popupSignupContainer, popupContainer, loggedInContainer, formSigninEmail, popupSigInButton, formSigninPass } from './consts.js';
+import {popupSignUpButtonMobile, RegExpEmail, errorMessageNameSignup, errorMessageEmailSignupMobile, errorMessagePassSignupMobile, errorMessageNameSignupMobile, errorMessage, errorMessageSearch, errorMessageSignup, errorMessagePass, errorMessagePassMobile, errorMessageEmailMobile, errorMessagePassSignup, mobilePopupSignUpButton, mobilePopupSignUp, popupSigInButtonMobile, mobilePopupSignInButton, popupSigUpButtonMobile, mobileSignInContainer, mobileSignInButton, mobileMenuButton, mobileMenuCloseButton, mobileMenuContainer, popupSignUpClose, popupSignUpButton, logoutButton, popupLinkButton, formSigninMobile, results, formSignupMobileName, formSignupMobileEmail, formSigninMobileEmail, popupAuthButton, formSigninMobilePass, searchFieldForm, searchFieldInput, popupClose, popupSignUpContainerMobile, notloggedInContainer, formSignupName, popupSigUpButton, popupSignUpContainer, formSignupPass, formSignupMobile, formSignupEmail, formSignupMobilePass, popupSignupContainer, popupContainer, loggedInContainer, formSigninEmail, popupSigInButton, formSigninPass } from './consts.js';
 
 
 //Открытие/закрытие Popup 
@@ -139,21 +139,24 @@ popupSigUpButton.addEventListener('click', function (event) {
     event.preventDefault();
 });
 
+popupSignUpButtonMobile.addEventListener('click', function (event) {
+    new ApiSignup(formSignupMobileEmail, formSignupMobilePass, formSignupMobileName);
+    event.preventDefault();
+});
+
 popupSigInButton.addEventListener('click', function (event) {
     new ApiSignin(formSigninEmail, formSigninPass);
     event.preventDefault();
 });
 
 popupSigInButtonMobile.addEventListener('click', function (event) {
-    new ApiSignin(formSignupMobileEmail, formSigninMobilePass);
+    new ApiSignin(formSigninMobileEmail, formSigninMobilePass);
     event.preventDefault();
 });
 
 
 logoutButton.addEventListener('click', function () {
-    localStorage.removeItem("token");
-    localStorage.removeItem("name");
-    localStorage.removeItem("id");
+    localStorage.clear();
     location="../index.html";
 });
 

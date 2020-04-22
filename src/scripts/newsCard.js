@@ -1,4 +1,4 @@
-import { popupSignupContainer, articleCardList, popupContainer,searchFieldInput } from './consts.js';
+import { popupSignupContainer, articleCardList, popupContainer, searchFieldInput } from './consts.js';
 
 export default class NewsCard {
     constructor(date, header, content, source, image, url) {
@@ -62,7 +62,7 @@ export default class NewsCard {
         articleCardList.appendChild(articleCard);
 
 
-        articleImage.style.backgroundImage =  "url(" + image + ")";
+        articleImage.style.backgroundImage = "url(" + image + ")";
         articleContentDate.textContent = date;
         articleContentHeader.textContent = header;
         articleContentText.textContent = content;
@@ -72,9 +72,11 @@ export default class NewsCard {
 
 
         articleCard.addEventListener('click', (event) => {
-            if (event.target.classList.contains('cards__article-button-chosen')) {
-                event.target.classList.add('cards__article-button-chosen_saved');
-                this.saveArticle(date, header, content, source, image, url);
+            if (localStorage.getItem("token")) {
+                if (event.target.classList.contains('cards__article-button-chosen')) {
+                    event.target.classList.add('cards__article-button-chosen_saved');
+                    this.saveArticle(date, header, content, source, image, url);
+                };
             };
         })
 

@@ -1,5 +1,5 @@
 import CardList from './cardList.js'
-import { articleCardList } from './consts.js';
+import { articleCardList,noResults } from './consts.js';
 
 
 export default class Api {
@@ -24,6 +24,7 @@ export default class Api {
                 if (result.articles == 0) {
                     noResults.classList.add('popup_is-opened');
                 } else {
+                    noResults.classList.remove('popup_is-opened');
                     new CardList(articleCardList, result.articles);
                 }
             })
