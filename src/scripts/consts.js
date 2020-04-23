@@ -1,5 +1,6 @@
-export {popupSignUpButtonMobile,viewMoreButton,savedArticleCountHeader,articleCardListSaved,popupSignupSuccessContainer,popupSignUpError,popupSignupSuccessLink,popupSignupSuccessClose,errorMessageNameSignup,errorMessageFalse, errorMessageEmailSignupMobile, errorMessagePassSignupMobile, errorMessageNameSignupMobile, errorMessage, errorMessageSearch, errorMessageSignup, errorMessagePass, errorMessagePassMobile, errorMessageEmailMobile, errorMessagePassSignup, mobilePopupSignUp, popupSigInButtonMobile, popupSigUpButtonMobile, mobilePopupSignInButton, mobilePopupSignUpButton, mobileSignInContainer, mobileSignInButton, mobileMenuButton, mobileMenuCloseButton, mobileMenuContainer, popupSignUpClose, popupSignUpButton, logoutButton, popupLinkButton, popupAuthButton, noResults, results, formSigninMobile, formSigninMobileEmail, formSignupMobileName, formSignupMobileEmail, formSigninMobilePass, popupClose, searchFieldForm, searchFieldInput, popupSignUpContainerMobile, notloggedInContainer, formSignupName, formSigninEmail, popupSignUpContainer, popupSigUpButton, formSignupPass, formSignupEmail, formSignup, formSignupMobile, formSignupMobilePass, popupSigInButton, loggedInContainer, formSignin, formSigninPass, popupSignupContainer, articleCardList, popupContainer, RegExpEmail, RegExpName, valid };
+export {saveCardCategory,popupSignUpButtonMobile,viewMoreButton,savedArticleCountHeader,articleCardListSaved,popupSignupSuccessContainer,popupSignUpError,popupSignupSuccessLink,popupSignupSuccessClose,errorMessageNameSignup,errorMessageFalse, errorMessageEmailSignupMobile, errorMessagePassSignupMobile, errorMessageNameSignupMobile, errorMessage, errorMessageSearch, errorMessageSignup, errorMessagePass, errorMessagePassMobile, errorMessageEmailMobile, errorMessagePassSignup, mobilePopupSignUp, popupSigInButtonMobile, popupSigUpButtonMobile, mobilePopupSignInButton, mobilePopupSignUpButton, mobileSignInContainer, mobileSignInButton, mobileMenuButton, mobileMenuCloseButton, mobileMenuContainer, popupSignUpClose, popupSignUpButton, logoutButton, popupLinkButton, popupAuthButton, noResults, results, formSigninMobile, formSigninMobileEmail, formSignupMobileName, formSignupMobileEmail, formSigninMobilePass, popupClose, searchFieldForm, searchFieldInput, popupSignUpContainerMobile, notloggedInContainer, formSignupName, formSigninEmail, popupSignUpContainer, popupSigUpButton, formSignupPass, formSignupEmail, formSignup, formSignupMobile, formSignupMobilePass, popupSigInButton, loggedInContainer, formSignin, formSigninPass, popupSignupContainer, articleCardList, popupContainer, RegExpEmail, RegExpName, valid };
 
+const saveCardCategory = document.querySelector('.saved__key-words-bold');
 const savedArticleCountHeader = document.querySelector('.saved__articles-amount-header');
 const popupSignupSuccessContainer = document.querySelector('.popup-signup-success');
 const popupSignupSuccessClose = popupSignupSuccessContainer.querySelector('.popup__close');
@@ -81,7 +82,6 @@ const valid = {
     notEmail: 'Почта указана неверно',
     wrongName: 'Перввый символ должен быть прописной.'
 };
-
 
 
 

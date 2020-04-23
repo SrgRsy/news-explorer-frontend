@@ -1,4 +1,4 @@
-import { articleCardListSaved,savedArticleCountHeader } from './consts.js';
+import { articleCardListSaved, savedArticleCountHeader, saveCardCategory } from './consts.js';
 export default class SavedArticles {
     constructor() {
         this.savedNews();
@@ -14,11 +14,20 @@ export default class SavedArticles {
         })
             .then(res => res.json())
             .then((data) => {
+
+                const keywordArr = []
+                for (let i = 0; i < data.data.length; i++){
+                    if (data.data[i].owner == localStorage.getItem('id') ) {
+                        if (!keywordArr.includes(data.data[i].keyword))
+                        keywordArr.push(data.data[i].keyword); 
+                    }
+                }
+                console.log(keywordArr);
+                
                 let a = 0;
                 data.data.forEach((item) => {
-                    if (item.owner == localStorage.getItem('id')) { 
+                    if (item.owner == localStorage.getItem('id')) {
                         a++;
-                        
                         const articleId = item._id;
                         const articleCard = document.createElement('div');
                         const articleImage = document.createElement('div');
@@ -33,7 +42,7 @@ export default class SavedArticles {
 
                         articleCard.classList.add('cards__article-card');
                         articleImage.classList.add('cards__article-image');
-                        // articleCategory.classList.add('cards__article-category');
+                        articleCategory.classList.add('cards__article-category');
                         articleCategory.classList.add('button__effect');
                         articleImageButtonUnsave.classList.add('cards__article-button-unsave');
                         articleContent.classList.add('cards__article-content');
@@ -55,14 +64,27 @@ export default class SavedArticles {
                         articleContent.appendChild(articleContentText);
                         articleContent.appendChild(articleContentSource);
 
+                        articleCategory.textContent = item.keyword;
                         articleImageButtonUnsave.textContent = "Убрать из сохраненных";
                         articleContentDate.textContent = item.date
                         articleContentHeader.textContent = item.title;
                         articleContentText.textContent = item.text;
                         articleContentSource.textContent = item.link;
-                        articleImage.style.backgroundImage = `url(${item.keyword}`;
+                        articleContentSource.href = item.link;
+                        articleImage.style.backgroundImage = `url(${item.image}`;
+
+                        savedArticleCountHeader.textContent = `${localStorage.getItem('name')}, у Вас ${a} сохраненных статей.`;
+
+                        if (keywordArr.length > 2) {
+                            saveCardCategory.textContent = ` ${keywordArr[0]}, ${keywordArr[1]} и еще ${keywordArr.length  - 2} словам.`
+                        } else if (keywordArr.length == 2) {
+                            saveCardCategory.textContent = ` ${keywordArr[0]} и ${keywordArr[1]}`
+                        } else if (keywordArr.length == 1) {
+                            saveCardCategory.textContent = ` ${keywordArr[0]}`
+                        } 
 
                         articleImageButton.addEventListener('click', function () {
+                            a--;
                             articleCard.remove();
                             fetch(`https://mesto-testo.site/articles/${articleId}`, {
                                 method: 'DELETE',
@@ -70,10 +92,11 @@ export default class SavedArticles {
                                     'Authorization': localStorage.getItem('token')
                                 }
                             })
+                            savedArticleCountHeader.textContent = `${localStorage.getItem('name')}, у Вас ${a} сохраненных статей.`;
                         });
                     }
                 })
-                savedArticleCountHeader.textContent = `${localStorage.getItem('name')}, у Вас ${a} сохраненных статей.`;
+
             })
     };
 }

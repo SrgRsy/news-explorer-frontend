@@ -75,6 +75,7 @@ export default class NewsCard {
             if (localStorage.getItem("token")) {
                 if (event.target.classList.contains('cards__article-button-chosen')) {
                     event.target.classList.add('cards__article-button-chosen_saved');
+                    event.target.setAttribute("disabled", "true");
                     this.saveArticle(date, header, content, source, image, url);
                 };
             };
@@ -89,12 +90,13 @@ export default class NewsCard {
                 'Authorization': localStorage.getItem('token')
             },
             body: JSON.stringify({
-                "keyword": image,
+                "keyword": searchFieldInput.value,
                 "title": header,
                 "text": content,
                 "date": date,
                 "link": url,
                 "source": source,
+                "image": image
             })
         })
             .then(res => res.json())
