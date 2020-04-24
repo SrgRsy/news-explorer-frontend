@@ -1,5 +1,5 @@
 import NewsCard from './newsCard.js';
-import { viewMoreButton } from './consts.js';
+import { viewMoreButton } from '../const/consts.js';
 export default class CardList {
     constructor(container, arr) {
         this.container = container;
@@ -9,9 +9,9 @@ export default class CardList {
 
     refreshCardsContainer() {
         const cards = document.querySelectorAll('.cards__article-card');
-        for (let i = 0; i < cards.length; i++) {
-            cards[i].remove();
-        };
+        cards.forEach((item) => {
+            item.remove();
+        });
     }
 
 
@@ -29,22 +29,11 @@ export default class CardList {
         })
 
         const cardArr = document.querySelectorAll('.cards__article-card');
-        for (let i = 3; i < cardArr.length; i++) {
+        const amountCardsShow = 3;
+        for (let i = amountCardsShow; i < cardArr.length; i++) {
             cardArr[i].classList.add('none');
         }
-
-        viewMoreButton.addEventListener('click', function () {
-            let i = 3;
-            let b = 3;
-            let c = 3;
-            const cardArr = document.querySelectorAll('.cards__article-card');
-            b = cardArr.length - document.querySelector('.cards__card-list').querySelectorAll('.none').length;
-            for (i; i < b + c; i++) {
-                cardArr[i].classList.remove('none');
-            }
-            if (document.querySelector('.cards__card-list').querySelectorAll('.none').length <= 2) {
-                viewMoreButton.classList.add('none');
-            }
-        });
     }
+
+
 };

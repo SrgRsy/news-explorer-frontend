@@ -1,12 +1,12 @@
 
 import '../pages/index.css';
-import Api from './api.js';
-import SavedArticles from './savedArticles.js';
-import ApiSignin from './apiSignin.js'
-import ApiSignup from './apiSignup.js'
-import Popup from './popup.js';
-import Validation from './validation.js';
-import {popupSignUpButtonMobile, RegExpEmail, errorMessageNameSignup, errorMessageEmailSignupMobile, errorMessagePassSignupMobile, errorMessageNameSignupMobile, errorMessage, errorMessageSearch, errorMessageSignup, errorMessagePass, errorMessagePassMobile, errorMessageEmailMobile, errorMessagePassSignup, mobilePopupSignUpButton, mobilePopupSignUp, popupSigInButtonMobile, mobilePopupSignInButton, popupSigUpButtonMobile, mobileSignInContainer, mobileSignInButton, mobileMenuButton, mobileMenuCloseButton, mobileMenuContainer, popupSignUpClose, popupSignUpButton, logoutButton, popupLinkButton, formSigninMobile, results, formSignupMobileName, formSignupMobileEmail, formSigninMobileEmail, popupAuthButton, formSigninMobilePass, searchFieldForm, searchFieldInput, popupClose, popupSignUpContainerMobile, notloggedInContainer, formSignupName, popupSigUpButton, popupSignUpContainer, formSignupPass, formSignupMobile, formSignupEmail, formSignupMobilePass, popupSignupContainer, popupContainer, loggedInContainer, formSigninEmail, popupSigInButton, formSigninPass } from './consts.js';
+import NewsApi from './api/newsApi.js';
+import SavedArticles from './api/savedArticles.js';
+import ApiSignin from './api/apiSignin.js'
+import ApiSignup from './api//apiSignup.js'
+import Popup from './popup/popup.js';
+import Validation from './valid/validation.js';
+import {viewMoreButton, popupSignUpButtonMobile, RegExpEmail, errorMessageNameSignup, errorMessageEmailSignupMobile, errorMessagePassSignupMobile, errorMessageNameSignupMobile, errorMessage, errorMessageSearch, errorMessageSignup, errorMessagePass, errorMessagePassMobile, errorMessageEmailMobile, errorMessagePassSignup, mobilePopupSignUpButton, mobilePopupSignUp, popupSigInButtonMobile, mobilePopupSignInButton, popupSigUpButtonMobile, mobileSignInContainer, mobileSignInButton, mobileMenuButton, mobileMenuCloseButton, mobileMenuContainer, popupSignUpClose, popupSignUpButton, logoutButton, popupLinkButton, formSigninMobile, results, formSignupMobileName, formSignupMobileEmail, formSigninMobileEmail, popupAuthButton, formSigninMobilePass, searchFieldForm, searchFieldInput, popupClose, popupSignUpContainerMobile, notloggedInContainer, formSignupName, popupSigUpButton, popupSignUpContainer, formSignupPass, formSignupMobile, formSignupEmail, formSignupMobilePass, popupSignupContainer, popupContainer, loggedInContainer, formSigninEmail, popupSigInButton, formSigninPass } from './const/consts.js';
 
 
 //Открытие/закрытие Popup 
@@ -65,7 +65,7 @@ searchFieldForm.addEventListener('submit', function (event) {
         event.preventDefault();
     } else {
         results.classList.add('popup_is-opened');
-        new Api(searchFieldForm.elements.searchField.value);
+        new NewsApi(searchFieldForm.elements.searchField.value);
         event.preventDefault();
     }
 });
@@ -160,7 +160,19 @@ logoutButton.addEventListener('click', function () {
     location="../index.html";
 });
 
-
+viewMoreButton.addEventListener('click', function () {
+    let i = 3;
+    let b = 3;
+    let c = 3;
+    const cardArr = document.querySelectorAll('.cards__article-card');
+    b = cardArr.length - document.querySelector('.cards__card-list').querySelectorAll('.none').length;
+    for (i; i < b + c; i++) {
+        cardArr[i].classList.remove('none');
+    }
+    if (document.querySelector('.cards__card-list').querySelectorAll('.none').length <= 2) {
+        viewMoreButton.classList.add('none');
+    }
+});
 
 
 

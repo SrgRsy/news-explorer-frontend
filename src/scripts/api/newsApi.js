@@ -1,13 +1,14 @@
-import CardList from './cardList.js'
-import { articleCardList,noResults } from './consts.js';
+import CardList from '../card/cardList.js'
+import { articleCardList,noResults } from '../const/consts.js';
 
 
-export default class Api {
+export default class NewsApi {
     constructor(keyword) {
-        let now = new Date();
+        const week = 7;
+        const now = new Date();
         const year = now.getFullYear();
         const month = now.getMonth() + 1;
-        const day = now.getDate() - 7;
+        const day = now.getDate() - week;
         this.getNews(keyword, year, month, day);
 
 

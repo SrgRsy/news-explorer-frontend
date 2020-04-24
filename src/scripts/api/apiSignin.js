@@ -1,4 +1,4 @@
-import { errorMessageFalse } from './consts.js';
+import { errorMessageFalse } from '../const/consts.js';
 export default class ApiSignin {
     constructor(mail, pass) {
         this.mail = mail;

@@ -1,4 +1,4 @@
-import { articleCardListSaved, savedArticleCountHeader, saveCardCategory } from './consts.js';
+import { articleCardListSaved, savedArticleCountHeader, saveCardCategory } from '../const/consts.js';
 export default class SavedArticles {
     constructor() {
         this.savedNews();
@@ -16,14 +16,13 @@ export default class SavedArticles {
             .then((data) => {
 
                 const keywordArr = []
-                for (let i = 0; i < data.data.length; i++){
-                    if (data.data[i].owner == localStorage.getItem('id') ) {
-                        if (!keywordArr.includes(data.data[i].keyword))
-                        keywordArr.push(data.data[i].keyword); 
+                data.data.forEach((item) => {
+                    if (item.owner == localStorage.getItem('id')) {
+                        if (!keywordArr.includes(item.keyword))
+                            keywordArr.push(item.keyword);
                     }
-                }
-                console.log(keywordArr);
-                
+                })
+
                 let a = 0;
                 data.data.forEach((item) => {
                     if (item.owner == localStorage.getItem('id')) {
@@ -53,7 +52,7 @@ export default class SavedArticles {
                         articleImageButton.classList.add('cards__article-button-trash');
                         articleImageButton.classList.add('button__effect');
 
-                        articleCardListSaved.appendChild(articleCard);
+
                         articleCard.appendChild(articleImage);
                         articleImage.appendChild(articleImageButtonUnsave);
                         articleImage.appendChild(articleImageButton);
@@ -63,6 +62,7 @@ export default class SavedArticles {
                         articleContent.appendChild(articleContentHeader);
                         articleContent.appendChild(articleContentText);
                         articleContent.appendChild(articleContentSource);
+                        articleCardListSaved.appendChild(articleCard);
 
                         articleCategory.textContent = item.keyword;
                         articleImageButtonUnsave.textContent = "Убрать из сохраненных";
@@ -76,12 +76,12 @@ export default class SavedArticles {
                         savedArticleCountHeader.textContent = `${localStorage.getItem('name')}, у Вас ${a} сохраненных статей.`;
 
                         if (keywordArr.length > 2) {
-                            saveCardCategory.textContent = ` ${keywordArr[0]}, ${keywordArr[1]} и еще ${keywordArr.length  - 2} словам.`
+                            saveCardCategory.textContent = ` ${keywordArr[0]}, ${keywordArr[1]} и еще ${keywordArr.length - 2} словам.`
                         } else if (keywordArr.length == 2) {
                             saveCardCategory.textContent = ` ${keywordArr[0]} и ${keywordArr[1]}`
                         } else if (keywordArr.length == 1) {
                             saveCardCategory.textContent = ` ${keywordArr[0]}`
-                        } 
+                        }
 
                         articleImageButton.addEventListener('click', function () {
                             a--;
@@ -98,5 +98,6 @@ export default class SavedArticles {
                 })
 
             })
+            .catch((err) => res.status(statusCode).send({ message: err.message }));
     };
 }

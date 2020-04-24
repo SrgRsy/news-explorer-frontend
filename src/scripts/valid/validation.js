@@ -1,4 +1,4 @@
-import {popupSigUpButton,formSignup,formSignupName,formSigninPass,formSignupEmail,formSignupPass,RegExpEmail,RegExpName,valid,formSignin,formSigninEmail,formSignupMobilePass,popupSigInButton } from './consts.js';
+import {popupSigUpButton,formSignup,formSignupName,formSigninPass,formSignupEmail,formSignupPass,RegExpEmail,RegExpName,valid,formSignin,formSigninEmail,formSignupMobilePass,popupSigInButton } from '../const/consts.js';
 export default class Validation {
     constructor() {
     }

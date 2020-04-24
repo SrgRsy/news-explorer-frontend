@@ -1,4 +1,4 @@
-import { popupSignupSuccessContainer,popupSignUpError, popupContainer, popupSignupSuccessLink, popupSignupContainer, popupSignupSuccessClose } from './consts.js';
+import { popupSignupSuccessContainer,popupSignUpError, popupContainer, popupSignupSuccessLink, popupSignupContainer, popupSignupSuccessClose } from '../const/consts.js';
 export default class ApiSignup {
     constructor(mail, pass, name) {
         this.mail = mail;

@@ -1,4 +1,4 @@
-import { popupSignupContainer, articleCardList, popupContainer, searchFieldInput } from './consts.js';
+import { popupSignupContainer, articleCardList, popupContainer, searchFieldInput } from '../const/consts.js';
 
 export default class NewsCard {
     constructor(date, header, content, source, image, url) {
