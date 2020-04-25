@@ -1,5 +1,5 @@
 import CardList from '../card/cardList.js'
-import { articleCardList,noResults } from '../const/consts.js';
+import { articleCardList, noResults } from '../const/consts.js';
 
 
 export default class NewsApi {

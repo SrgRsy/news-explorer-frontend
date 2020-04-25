@@ -19,13 +19,14 @@ export default class MainApi {
                 }
                 return res.json();
             })
-            .then(res => res.json())
             .then((data) => {
                 localStorage.setItem('id', data._id);
                 localStorage.setItem('name', data.name);
 
             })
-            .catch((err) => res.status(statusCode).send({ message: err.message }))
+            .catch((err) => {
+                console.log(err);
+            });
     }
 
     signIn(mail, pass) {
@@ -45,7 +46,6 @@ export default class MainApi {
                 }
                 return res.json();
             })
-            .then(res => res.json())
             .then((data) => {
                 if (data.token) {
                     localStorage.setItem('token', `Bearer ${data.token}`);
@@ -57,7 +57,9 @@ export default class MainApi {
                 }
 
             })
-            .catch((err) => res.status(statusCode).send({ message: err.message }))
+            .catch((err) => {
+                console.log(err);
+            });
     };
 
     signUp(mail, pass, name) {
@@ -75,12 +77,7 @@ export default class MainApi {
             .then((res) => {
                 if (!res.ok) {
                     return Promise.reject(`Ошибка: ${res.status}`);
-                }
-                return res.json();
-            })
-            .then(res => res.json())
-            .then((res) => {
-                if (res.message == "Пользователь создан") {
+                } else {
                     popupSignupSuccessContainer.classList.add('popup_is-opened');
                     popupSignupContainer.classList.remove('popup_is-opened');
 
@@ -92,11 +89,13 @@ export default class MainApi {
                         popupSignupSuccessContainer.classList.remove('popup_is-opened');
                         popupContainer.classList.add('popup_is-opened');
                     });
-                } else {
-                    popupSignUpError.classList.add('error-message-active');
                 }
+                return res.json();
             })
-            .catch((err) => res.status(statusCode).send({ message: err.message }))
+            .catch((err) => {
+                console.log(err);
+            });
+
     }
 
     savedArticles() {
@@ -112,9 +111,7 @@ export default class MainApi {
                 }
                 return res.json();
             })
-            .then(res => res.json())
             .then((data) => {
-
                 const keywordArr = []
                 data.data.forEach((item) => {
                     if (item.owner == localStorage.getItem('id')) {
@@ -193,7 +190,10 @@ export default class MainApi {
                 })
 
             })
-            .catch((err) => res.status(statusCode).send({ message: err.message }));
+            .catch((err) => {
+                console.log(err);
+            });
+
 
     }
 
@@ -211,7 +211,7 @@ export default class MainApi {
                 "date": date,
                 "link": url,
                 "source": source,
-                "image": url
+                "image": image
             })
         })
             .then((res) => {
@@ -220,11 +220,12 @@ export default class MainApi {
                 }
                 return res.json();
             })
-            .then(res => res.json())
             .then((data) => {
-                
+                console.log(data);
             })
-            .catch((err) => res.status(statusCode).send({ message: err.message }));
+            .catch((err) => {
+                console.log(err);
+            });
     }
 
     deleteArticle(articleId) {
@@ -240,6 +241,8 @@ export default class MainApi {
                 }
                 return res.json();
             })
-            .catch((err) => res.status(statusCode).send({ message: err.message }));
+            .catch((err) => {
+                console.log(err);
+            });
     }
 }
