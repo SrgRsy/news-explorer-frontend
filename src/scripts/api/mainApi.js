@@ -39,6 +39,12 @@ export default class MainApi {
                 password: pass.value
             })
         })
+            .then((res) => {
+                if (!res.ok) {
+                    return Promise.reject(`Ошибка: ${res.status}`);
+                }
+                return res.json();
+            })
             .then(res => res.json())
             .then((data) => {
                 if (data.token) {
@@ -66,6 +72,12 @@ export default class MainApi {
                 name: name.value
             })
         })
+            .then((res) => {
+                if (!res.ok) {
+                    return Promise.reject(`Ошибка: ${res.status}`);
+                }
+                return res.json();
+            })
             .then(res => res.json())
             .then((res) => {
                 if (res.message == "Пользователь создан") {
@@ -94,6 +106,12 @@ export default class MainApi {
                 'Authorization': localStorage.getItem('token')
             }
         })
+            .then((res) => {
+                if (!res.ok) {
+                    return Promise.reject(`Ошибка: ${res.status}`);
+                }
+                return res.json();
+            })
             .then(res => res.json())
             .then((data) => {
 
@@ -196,9 +214,15 @@ export default class MainApi {
                 "image": url
             })
         })
+            .then((res) => {
+                if (!res.ok) {
+                    return Promise.reject(`Ошибка: ${res.status}`);
+                }
+                return res.json();
+            })
             .then(res => res.json())
             .then((data) => {
-                console.log(data);
+                
             })
             .catch((err) => res.status(statusCode).send({ message: err.message }));
     }
@@ -210,6 +234,12 @@ export default class MainApi {
                 'Authorization': localStorage.getItem('token')
             }
         })
+            .then((res) => {
+                if (!res.ok) {
+                    return Promise.reject(`Ошибка: ${res.status}`);
+                }
+                return res.json();
+            })
             .catch((err) => res.status(statusCode).send({ message: err.message }));
     }
 }
