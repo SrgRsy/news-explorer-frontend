@@ -113,18 +113,18 @@ export default class MainApi {
             })
             .then((data) => {
                 const keywordArr = []
-                data.data.forEach((item) => {
-                    if (item.owner == localStorage.getItem('id')) {
-                        if (!keywordArr.includes(item.keyword))
-                            keywordArr.push(item.keyword);
+                data.data.forEach((keywords) => {
+                    if (keywords.owner == localStorage.getItem('id')) {
+                        if (!keywordArr.includes(keywords.keyword))
+                            keywordArr.push(keywords.keyword);
                     }
                 })
 
                 let a = 0;
-                data.data.forEach((item) => {
-                    if (item.owner == localStorage.getItem('id')) {
+                data.data.forEach((elements) => {
+                    if (elements.owner == localStorage.getItem('id')) {
                         a++;
-                        const articleId = item._id;
+                        const articleId = elements._id;
                         const articleCard = document.createElement('div');
                         const articleImage = document.createElement('div');
                         const articleCategory = document.createElement('div');
@@ -161,14 +161,14 @@ export default class MainApi {
                         articleContent.appendChild(articleContentSource);
                         articleCardListSaved.appendChild(articleCard);
 
-                        articleCategory.textContent = item.keyword;
+                        articleCategory.textContent = elements.keyword;
                         articleImageButtonUnsave.textContent = "Убрать из сохраненных";
-                        articleContentDate.textContent = item.date
-                        articleContentHeader.textContent = item.title;
-                        articleContentText.textContent = item.text;
-                        articleContentSource.textContent = item.source;
-                        articleContentSource.href = item.link;
-                        articleImage.style.backgroundImage = `url(${item.image}`;
+                        articleContentDate.textContent = elements.date
+                        articleContentHeader.textContent = elements.title;
+                        articleContentText.textContent = elements.text;
+                        articleContentSource.textContent = elements.source;
+                        articleContentSource.href = elements.link;
+                        articleImage.style.backgroundImage = `url(${elements.image}`;
 
                         savedArticleCountHeader.textContent = `${localStorage.getItem('name')}, у Вас ${a} сохраненных статей.`;
 
@@ -181,9 +181,7 @@ export default class MainApi {
                         }
 
                         articleImageButton.addEventListener('click', () => {
-                            a--;
-                            this.deleteArticle(articleId);
-                            articleCard.remove();
+                            this.deleteArticle(articleId, articleCard, a);
                             savedArticleCountHeader.textContent = `${localStorage.getItem('name')}, у Вас ${a} сохраненных статей.`;
                         });
                     }
@@ -197,7 +195,7 @@ export default class MainApi {
 
     }
 
-    saveArticle(date, header, content, source, image, url) {
+    saveArticle(date, header, content, source, image, url, button) {
         fetch('https://mesto-testo.site/articles', {
             method: 'POST',
             headers: {
@@ -211,24 +209,23 @@ export default class MainApi {
                 "date": date,
                 "link": url,
                 "source": source,
-                "image": image
+                "image": url
             })
         })
             .then((res) => {
                 if (!res.ok) {
                     return Promise.reject(`Ошибка: ${res.status}`);
                 }
+                button.classList.add('cards__article-button-chosen_saved');
                 return res.json();
-            })
-            .then((data) => {
-                console.log(data);
             })
             .catch((err) => {
                 console.log(err);
             });
     }
 
-    deleteArticle(articleId) {
+    deleteArticle(articleId, art, count) {
+        console.log(articleId);
         fetch(`https://mesto-testo.site/articles/${articleId}`, {
             method: 'DELETE',
             headers: {
@@ -238,8 +235,12 @@ export default class MainApi {
             .then((res) => {
                 if (!res.ok) {
                     return Promise.reject(`Ошибка: ${res.status}`);
+                } else {
+                    art.remove();
+                    count--;
+                    return res.json();
+
                 }
-                return res.json();
             })
             .catch((err) => {
                 console.log(err);

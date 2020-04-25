@@ -74,9 +74,9 @@ export default class NewsCard {
         articleCard.addEventListener('click', (event) => {
             if (localStorage.getItem("token")) {
                 if (event.target.classList.contains('cards__article-button-chosen')) {
-                    event.target.classList.add('cards__article-button-chosen_saved');
+                    mainApi.saveArticle(date, header, content, source, image, url, articleImageButton);
                     event.target.setAttribute("disabled", "true");
-                    mainApi.saveArticle(date, header, content, source, image, url);
+                    
                 };
             };
         })

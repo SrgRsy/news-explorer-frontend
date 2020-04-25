@@ -9,8 +9,8 @@ export default class CardList {
 
     refreshCardsContainer() {
         const cards = document.querySelectorAll('.cards__article-card');
-        cards.forEach((item) => {
-            item.remove();
+        cards.forEach((containers) => {
+            containers.remove();
         });
     }
 
@@ -18,13 +18,13 @@ export default class CardList {
     render() {
         this.refreshCardsContainer();
         viewMoreButton.classList.remove('none');
-        this.arr.forEach((item) => {
-            const date = item.publishedAt.split("T")[0];
-            const header = item.title;
-            const content = item.description;
-            const source = item.source.name;
-            const image = item.urlToImage;
-            const url = item.url;
+        this.arr.forEach((cards) => {
+            const date = cards.publishedAt.split("T")[0];
+            const header = cards.title;
+            const content = cards.description;
+            const source = cards.source.name;
+            const image = cards.urlToImage;
+            const url = cards.url;
             this.container = new NewsCard(date, header, content, source, image, url);
         })
 
