@@ -1,4 +1,4 @@
-import { popupSignupContainer, articleCardList, popupContainer, searchFieldInput } from '../const/consts.js';
+import { mainApi, popupSignupContainer, articleCardList, popupContainer, searchFieldInput } from '../const/consts.js';
 
 export default class NewsCard {
     constructor(date, header, content, source, image, url) {
@@ -76,34 +76,12 @@ export default class NewsCard {
                 if (event.target.classList.contains('cards__article-button-chosen')) {
                     event.target.classList.add('cards__article-button-chosen_saved');
                     event.target.setAttribute("disabled", "true");
-                    this.saveArticle(date, header, content, source, image, url);
+                    mainApi.saveArticle(date, header, content, source, image, url);
                 };
             };
         })
 
     }
-    saveArticle(date, header, content, source, image, url) {
-        fetch('https://mesto-testo.site/articles', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': localStorage.getItem('token')
-            },
-            body: JSON.stringify({
-                "keyword": searchFieldInput.value,
-                "title": header,
-                "text": content,
-                "date": date,
-                "link": url,
-                "source": source,
-                "image": image
-            })
-        })
-            .then(res => res.json())
-            .then((data) => {
-                console.log(data);
-            })
-            .catch((err) => res.status(statusCode).send({ message: err.message }))
-    }
+    
 };
 

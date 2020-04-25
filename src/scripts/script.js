@@ -1,12 +1,10 @@
 
 import '../pages/index.css';
+
 import NewsApi from './api/newsApi.js';
-import SavedArticles from './api/savedArticles.js';
-import ApiSignin from './api/apiSignin.js'
-import ApiSignup from './api//apiSignup.js'
 import Popup from './popup/popup.js';
 import Validation from './valid/validation.js';
-import {viewMoreButton, popupSignUpButtonMobile, RegExpEmail, errorMessageNameSignup, errorMessageEmailSignupMobile, errorMessagePassSignupMobile, errorMessageNameSignupMobile, errorMessage, errorMessageSearch, errorMessageSignup, errorMessagePass, errorMessagePassMobile, errorMessageEmailMobile, errorMessagePassSignup, mobilePopupSignUpButton, mobilePopupSignUp, popupSigInButtonMobile, mobilePopupSignInButton, popupSigUpButtonMobile, mobileSignInContainer, mobileSignInButton, mobileMenuButton, mobileMenuCloseButton, mobileMenuContainer, popupSignUpClose, popupSignUpButton, logoutButton, popupLinkButton, formSigninMobile, results, formSignupMobileName, formSignupMobileEmail, formSigninMobileEmail, popupAuthButton, formSigninMobilePass, searchFieldForm, searchFieldInput, popupClose, popupSignUpContainerMobile, notloggedInContainer, formSignupName, popupSigUpButton, popupSignUpContainer, formSignupPass, formSignupMobile, formSignupEmail, formSignupMobilePass, popupSignupContainer, popupContainer, loggedInContainer, formSigninEmail, popupSigInButton, formSigninPass } from './const/consts.js';
+import {mainApi, viewMoreButton, popupSignUpButtonMobile, RegExpEmail, errorMessageNameSignup, errorMessageEmailSignupMobile, errorMessagePassSignupMobile, errorMessageNameSignupMobile, errorMessage, errorMessageSearch, errorMessageSignup, errorMessagePass, errorMessagePassMobile, errorMessageEmailMobile, errorMessagePassSignup, mobilePopupSignUpButton, mobilePopupSignUp, popupSigInButtonMobile, mobilePopupSignInButton, popupSigUpButtonMobile, mobileSignInContainer, mobileSignInButton, mobileMenuButton, mobileMenuCloseButton, mobileMenuContainer, popupSignUpClose, popupSignUpButton, logoutButton, popupLinkButton, formSigninMobile, results, formSignupMobileName, formSignupMobileEmail, formSigninMobileEmail, popupAuthButton, formSigninMobilePass, searchFieldForm, searchFieldInput, popupClose, popupSignUpContainerMobile, notloggedInContainer, formSignupName, popupSigUpButton, popupSignUpContainer, formSignupPass, formSignupMobile, formSignupEmail, formSignupMobilePass, popupSignupContainer, popupContainer, loggedInContainer, formSigninEmail, popupSigInButton, formSigninPass } from './const/consts.js';
 
 
 //Открытие/закрытие Popup 
@@ -51,7 +49,7 @@ window.onload = function () {
 
 if (localStorage.getItem("token")) {
     loggedInContainer.classList.add('popup_is-opened');
-    new SavedArticles();
+    mainApi.savedArticles();
     loggedInContainer.querySelector('.header__auth-button-name').textContent = localStorage.getItem('name');
 } else if (!localStorage.getItem("token")) {
     notloggedInContainer.classList.add('popup_is-opened');
@@ -134,23 +132,25 @@ formSignupMobile.addEventListener('input', function () {
     }
 });
 
+
+
 popupSigUpButton.addEventListener('click', function (event) {
-    new ApiSignup(formSignupEmail, formSignupPass, formSignupName);
+    mainApi.signUp(formSignupEmail, formSignupPass, formSignupName);
     event.preventDefault();
 });
 
 popupSignUpButtonMobile.addEventListener('click', function (event) {
-    new ApiSignup(formSignupMobileEmail, formSignupMobilePass, formSignupMobileName);
+    mainApi.signUp(formSignupMobileEmail, formSignupMobilePass, formSignupMobileName);
     event.preventDefault();
 });
 
 popupSigInButton.addEventListener('click', function (event) {
-    new ApiSignin(formSigninEmail, formSigninPass);
+    mainApi.signIn(formSigninEmail,formSigninPass);
     event.preventDefault();
 });
 
 popupSigInButtonMobile.addEventListener('click', function (event) {
-    new ApiSignin(formSigninMobileEmail, formSigninMobilePass);
+    mainApi.signIn(formSigninMobileEmail, formSigninMobilePass);
     event.preventDefault();
 });
 

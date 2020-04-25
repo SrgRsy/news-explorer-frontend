@@ -4,11 +4,10 @@ import { articleCardList,noResults } from '../const/consts.js';
 
 export default class NewsApi {
     constructor(keyword) {
-        const week = 7;
         const now = new Date();
         const year = now.getFullYear();
         const month = now.getMonth() + 1;
-        const day = now.getDate() - week;
+        const day = now.getDate() - 7;
         this.getNews(keyword, year, month, day);
 
 
@@ -26,6 +25,7 @@ export default class NewsApi {
                     noResults.classList.add('popup_is-opened');
                 } else {
                     noResults.classList.remove('popup_is-opened');
+                    console.log(result.articles);
                     new CardList(articleCardList, result.articles);
                 }
             })

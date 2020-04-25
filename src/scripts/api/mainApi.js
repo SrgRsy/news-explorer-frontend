@@ -1,11 +1,93 @@
-import { articleCardListSaved, savedArticleCountHeader, saveCardCategory } from '../const/consts.js';
-export default class SavedArticles {
-    constructor() {
-        this.savedNews();
+import { searchFieldInput, errorMessageFalse, articleCardListSaved, savedArticleCountHeader, saveCardCategory, popupSignupSuccessContainer, popupSignUpError, popupContainer, popupSignupSuccessLink, popupSignupContainer, popupSignupSuccessClose } from '../const/consts.js';
 
+export default class MainApi {
+    constructor() {
 
     }
-    savedNews() {
+
+    myData() {
+        fetch('https://mesto-testo.site/users/me', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `${localStorage.getItem('token')}`
+            }
+        })
+            .then((res) => {
+                if (!res.ok) {
+                    return Promise.reject(`Ошибка: ${res.status}`);
+                }
+                return res.json();
+            })
+            .then(res => res.json())
+            .then((data) => {
+                localStorage.setItem('id', data._id);
+                localStorage.setItem('name', data.name);
+
+            })
+            .catch((err) => res.status(statusCode).send({ message: err.message }))
+    }
+
+    signIn(mail, pass) {
+        fetch('https://mesto-testo.site/signin', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: mail.value,
+                password: pass.value
+            })
+        })
+            .then(res => res.json())
+            .then((data) => {
+                if (data.token) {
+                    localStorage.setItem('token', `Bearer ${data.token}`);
+                    this.myData();
+                    location = "../index.html";
+                } else {
+                    errorMessageFalse.textContent = "Неверные учетные данные";
+                    errorMessageFalse.classList.add('error-message-active');
+                }
+
+            })
+            .catch((err) => res.status(statusCode).send({ message: err.message }))
+    };
+
+    signUp(mail, pass, name) {
+        fetch('https://mesto-testo.site/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: mail.value,
+                password: pass.value,
+                name: name.value
+            })
+        })
+            .then(res => res.json())
+            .then((res) => {
+                if (res.message == "Пользователь создан") {
+                    popupSignupSuccessContainer.classList.add('popup_is-opened');
+                    popupSignupContainer.classList.remove('popup_is-opened');
+
+                    popupSignupSuccessClose.addEventListener('click', function () {
+                        popupSignupSuccessContainer.classList.remove('popup_is-opened');
+                    });
+
+                    popupSignupSuccessLink.addEventListener('click', function () {
+                        popupSignupSuccessContainer.classList.remove('popup_is-opened');
+                        popupContainer.classList.add('popup_is-opened');
+                    });
+                } else {
+                    popupSignUpError.classList.add('error-message-active');
+                }
+            })
+            .catch((err) => res.status(statusCode).send({ message: err.message }))
+    }
+
+    savedArticles() {
         fetch('https://mesto-testo.site/articles', {
             method: 'GET',
             headers: {
@@ -69,7 +151,7 @@ export default class SavedArticles {
                         articleContentDate.textContent = item.date
                         articleContentHeader.textContent = item.title;
                         articleContentText.textContent = item.text;
-                        articleContentSource.textContent = item.link;
+                        articleContentSource.textContent = item.source;
                         articleContentSource.href = item.link;
                         articleImage.style.backgroundImage = `url(${item.image}`;
 
@@ -83,15 +165,10 @@ export default class SavedArticles {
                             saveCardCategory.textContent = ` ${keywordArr[0]}`
                         }
 
-                        articleImageButton.addEventListener('click', function () {
+                        articleImageButton.addEventListener('click', () => {
                             a--;
+                            this.deleteArticle(articleId);
                             articleCard.remove();
-                            fetch(`https://mesto-testo.site/articles/${articleId}`, {
-                                method: 'DELETE',
-                                headers: {
-                                    'Authorization': localStorage.getItem('token')
-                                }
-                            })
                             savedArticleCountHeader.textContent = `${localStorage.getItem('name')}, у Вас ${a} сохраненных статей.`;
                         });
                     }
@@ -99,5 +176,40 @@ export default class SavedArticles {
 
             })
             .catch((err) => res.status(statusCode).send({ message: err.message }));
-    };
+
+    }
+
+    saveArticle(date, header, content, source, image, url) {
+        fetch('https://mesto-testo.site/articles', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('token')
+            },
+            body: JSON.stringify({
+                "keyword": searchFieldInput.value,
+                "title": header,
+                "text": content,
+                "date": date,
+                "link": url,
+                "source": source,
+                "image": url
+            })
+        })
+            .then(res => res.json())
+            .then((data) => {
+                console.log(data);
+            })
+            .catch((err) => res.status(statusCode).send({ message: err.message }));
+    }
+
+    deleteArticle(articleId) {
+        fetch(`https://mesto-testo.site/articles/${articleId}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': localStorage.getItem('token')
+            }
+        })
+            .catch((err) => res.status(statusCode).send({ message: err.message }));
+    }
 }
