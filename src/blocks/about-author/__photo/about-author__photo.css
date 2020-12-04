@@ -1,0 +1,22 @@
+.about-author__photo {
+    display: flex;
+    position: relative;
+    height: 464px;
+    flex-wrap: wrap;
+    margin: 80px 56px;
+}
+
+@media screen and (min-width:320px) and (max-width:768px) {
+    .about-author__photo {
+        height: 232px;
+        width: 232px;
+        margin: 61px 32px 61px 40px;
+    }
+}
+
+@media screen and (max-width:320px) {
+    .about-author__photo {
+        height: 272px;
+        width: 272px;
+    }
+}

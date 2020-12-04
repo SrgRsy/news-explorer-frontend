@@ -1,0 +1,34 @@
+.header__auth-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #FFFFFF;
+    background-color: transparent;
+    border-radius: 100px;
+    color: #FFFFFF;
+    width: 176px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.header__auth-button:active {
+    border: 3px solid #FFFFFF;
+};
+
+@media screen and (max-width:768px) {
+    .header__auth-button {
+        width: 120px;
+        height: 40px;
+    }
+}
+
+@media screen and (max-width:550px) {
+    .header__auth-button {
+        width: 120px;
+        height: 40px;
+        margin-top:15px;
+        display: none;
+        top: 130px;
+        right: 0px;
+    }
+}

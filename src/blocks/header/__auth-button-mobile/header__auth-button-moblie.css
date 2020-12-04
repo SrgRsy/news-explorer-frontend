@@ -1,0 +1,25 @@
+.header__auth-button-moblie {
+    top: 24px;
+    right: 30px;
+    height: 30px;
+    width: 30px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../../../image/menu.png);
+    display: none;
+}
+.header__auth-button-moblie_opened{
+    background-image: url(../../../image/close.svg);
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    filter: none;
+}
+@media screen and (max-width:550px) {
+    .header__auth-button-moblie {
+        display:block;
+    }
+}

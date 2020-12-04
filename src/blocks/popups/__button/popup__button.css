@@ -1,0 +1,40 @@
+.popup__button {
+  background: #2F71E5;
+  width: 358px;
+  height: 64px;
+  border: 1px solid #FFFFFF;
+  margin-top: 10px;
+  color: #FFFFFF;
+  font-size: 20px;
+  border-radius: 100px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.popup__button:hover {
+  background: #347EFF;
+}
+
+@media screen and (max-width:550px) {
+  .popup__button {
+    width: 288px;
+    position: absolute;
+    left: 15px;
+    top: 235px;
+  }
+}
+
+@media screen and (max-width:550px) {
+  .popup__button-signup_mobile {
+    top: 335px;
+  }
+}
+
+.input__btn_disabled {
+  background-color: #f1f1f1;
+  color: black;
+  cursor: default;
+}

@@ -1,0 +1,26 @@
+.header__main-button {
+    position: relative;
+    background-color: transparent;
+    border: 1px solid transparent;
+    color: #FFFFFF;
+    height: 80px;
+    margin-right: 32px;
+    cursor: pointer;
+}
+
+.header__main-button:hover {
+    border-bottom: 3px solid #FFFFFF;
+}
+
+@media screen and (max-width:768px) {
+    .header__main-button {
+        margin-right: 16px;
+    }
+}
+
+@media screen and (max-width:550px) {
+    .header__main-button {
+        height: 56px;
+        display: none;
+    }
+}
