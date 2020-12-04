@@ -1,9 +1,0 @@
-.header__mobile-navi_button-show {
-    
-}
-
-@media screen and (max-width: 550px) {
-    .header__mobile-navi_button-show {
-        display: none;
-    }
-}
